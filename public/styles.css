@@ -12,6 +12,9 @@ body {
     font-family: Mulish, sans-serif;
     background: white;
     color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header */
@@ -45,6 +48,7 @@ main {
     gap: 20px;
     padding: 20px;
     justify-content: center;
+    flex-grow: 1;
 }
 section img {
     max-width: 100%;
@@ -69,32 +73,42 @@ p {
 }
 
 /* Pokemon Thumbnails */
-section:nth-child(1) div {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+#pokeBallContainer {
+    display: grid; /* Usamos Grid en lugar de Flex */
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas de tamaño igual */
+    gap: 10px; /* Espacio entre las imágenes */
     margin-top: 10px;
     justify-content: center;
 }
-section:nth-child(1) div img {
-    width: 126px;
-    height: 126px;
+#pokeBallContainer img {
+    width: 100%; /* Hace que las imágenes se ajusten al 100% de su celda */
+    max-width: 126px; /* Tamaño máximo de cada imagen */
+    height: 126px; /* Altura fija para las imágenes */
     border-radius: 10px;
 }
 
-/* Footer */
+/* Button */
+#addPokeBallBtn {
+    background-color: #F44949;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+#addPokeBallBtn:hover {
+    background-color: #d73838;
+}
+
 /* Footer */
 footer {
-    position: fixed; /* Lo coloca en una posición fija */
-    bottom: 0; /* Se coloca en la parte inferior de la pantalla */
-    left: 0; /* Alineado a la izquierda */
-    width: 100%; /* Ocupa todo el ancho de la pantalla */
     text-align: center;
     padding: 20px;
     background: #F44949;
     color: white;
 }
-
 
 /* Responsive Design */
 @media (max-width: 1024px) {
