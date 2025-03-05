@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokevision</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
     <header>
-        <img src="/img/Pokevision.png" alt="Logo">
+        <img src="src/img/Pokevision.png" alt="Logo">
         <nav>
             <a href="https://sudhanshu-ambastha.github.io/Pokemon-3D/">Pokemon3D</a>
             <a href="https://www.pokemon.com/es/pokedex">PokeGuia</a>
@@ -16,29 +16,74 @@
     </header>
 
     <main>
-        <section>
-            <img src="https://placehold.co/790x498" alt="Main Pokemon">
-            <div id="pokeBallContainer">
-                <!-- Las imágenes de Pokébola se agregarán aquí -->
-            </div>
-            <button id="addPokeBallBtn">Añadir Pokébola</button>
-        </section>
-
-        <section>
-            <h2>Descripción Pokémon: X</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id elit et libero faucibus facilisis vitae at odio. 
-                Vivamus at lorem dignissim, eleifend enim a, aliquet dolor. Sed tortor ligula, interdum vitae ipsum vitae, 
-                iaculis commodo orci. Nunc volutpat scelerisque augue ut auctor. Duis vulputate eu lorem quis posuere. 
-                Curabitur consectetur urna in urna sagittis euismod.
-            </p>
-        </section>
+        <div class="container">
+            <section id="sectionVideo">
+                <div id="videoContainer" style="position: relative; width: 100%; height: 65%;">
+                    <video id="myVideo" width="100%" height="100%" autoplay muted>
+                        <source src="src/video/video.mp4" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                        <track kind="chapters" label="chapters" src="src/tracks/chapters.vtt" default>
+                    </video>
+                    <img id="gifOverlay" src="" style="display: none; z-index: 10;">
+                    <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png" style="display: none; z-index: 10;">
+                    <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
+                </div>
+                <div id="botonera" style="display: flex;">
+                    <button id="addPokeBallBtn">Añadir Pokébola</button>
+                    <button id="continueVideo" hidden="true">Reanudar</button>
+                    <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
+                    
+                    <div id="config">
+                        <fieldset>
+                            <div style="flex-direction: column; display: flex;">
+                                <div>
+                                    <input type="radio" id="boy" name="trainer" value="Boy" checked/>
+                                    <label for="boy">Chico</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="girl" name="trainer" value="Girl" />
+                                    <label for="girl">Chica</label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        
+                    </div>
+                </div>
+                <!--<img src="https://placehold.co/790x498" alt="Main Pokemon">-->
+                
+                <div id="pokeBallContainer" style="display: contents;">
+                    <!-- Las imágenes de Pokébola se agregarán aquí -->
+                </div>
+                
+            </section>
+    
+            <section id="sectionDescription" style="height: 60%;">
+                <h2>Descripción Pokémon: X</h2>
+                <div id="pokemonDescription" style="display: flexbox;">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id elit et libero faucibus facilisis vitae at odio. 
+                        Vivamus at lorem dignissim, eleifend enim a, aliquet dolor. Sed tortor ligula, interdum vitae ipsum vitae, 
+                        iaculis commodo orci. Nunc volutpat scelerisque augue ut auctor. Duis vulputate eu lorem quis posuere. 
+                        Curabitur consectetur urna in urna sagittis euismod.
+                    </p>
+                </div>
+            </section>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2023 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez and Miquel Ángel Montero Pazmiño</p>
+        <div style="display: flex;"></div>
+        <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="JS/addPokeballEvent.js"></script>
+    <script src="JS/changeTrainerSprite.js"></script>
+    <script src="JS/continueVideo.js"></script>
+    <script src="JS/getPokeAPI.js"></script>
+    <script src="JS/lanzarPokeBall.js"></script>
+    <script src="JS/setImgPossition.js"></script>
+    <script src="JS/showImage.js"></script>
+    <script src="JS/videoChapters.js"></script>
+    
 </body>
 </html>
