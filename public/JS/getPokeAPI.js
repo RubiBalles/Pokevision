@@ -1,3 +1,5 @@
+
+
 const GENERIC_URL="https://projectpokemon.org/images/normal-sprite/"
 const GEN_8_URL="https://projectpokemon.org/images/sprites-models/swsh-normal-sprites/"
 const GEN_9_STATIC_URL="https://projectpokemon.org/images/sprites-models/sv-sprites-regular/"
@@ -39,15 +41,45 @@ async function getPokeAPI(nameOrId,chapterPokemon=false){
             ACT_POKEMON_SPRITE={name:data.name,src:data.sprites.front_default}
         }
 
-
         infoDiv.innerHTML = `
             <h2>${data.name.toUpperCase()}</h2>
             <img id="pokemonSprite" src=${data.sprites.front_default} alt="${data.name}">
-            <p><strong>ID:</strong> ${data.id}</p>
+            <p><strong>Nº de Pokedex:</strong> ${data.id}</p>
             <p><strong>Altura:</strong> ${data.height / 10} m</p>
             <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
+            <div style="align-items: center;">
+                <p><strong>Tipo:<img id="type1" class="pokeType"><img id="type2" class="pokeType"></p>
+            </div>
+            
         `;
+        getPokemonType(data.types)
     } catch (error) {
         infoDiv.innerHTML = `<p>Error: Pokémon no encontrado.</p>`;
     }
+}
+
+async function getPokemonType(typesArray){
+
+    var i = 1, urls = [];
+
+    try {
+        // Esperar a que todas las promesas se resuelvan
+        const responses = await Promise.all(typesArray.map(async (element) => {
+            const response = await fetch(element.type.url);
+            if (!response.ok) throw new Error("Tipo Pokémon no encontrado!");
+            const data = await response.json();
+            return data.sprites["generation-viii"]["sword-shield"].name_icon;
+        }));
+
+        // Guardar las URLs una vez que todas las promesas se completaron
+        urls = responses;
+    } catch (error) {
+        console.log(error);
+    }
+
+    // Ahora podemos recorrer urls porque ya están todas las imágenes cargadas
+    urls.forEach(element => {
+        document.getElementById("type" + i).src = element;
+        i++;
+    });
 }

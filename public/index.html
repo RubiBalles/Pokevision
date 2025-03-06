@@ -28,14 +28,17 @@
                     <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png" style="display: none; z-index: 10;">
                     <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
                 </div>
-                <div id="botonera" style="display: flex;">
-                    <button id="addPokeBallBtn">Añadir Pokébola</button>
-                    <button id="continueVideo" hidden="true">Reanudar</button>
-                    <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
+                <div id="botonera" style="  display: grid;
+  grid-template-columns: auto auto; margin: 1%;">
                     
-                    <div id="config">
-                        <fieldset>
-                            <div style="flex-direction: column; display: flex;">
+                        <button id="addPokeBallBtn">Añadir Pokébola</button>
+                        <button id="continueVideo" hidden="true">Reanudar</button>
+                    
+
+                    
+                        <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
+                        <fieldset style="align-items: center;">
+                            <div>
                                 <div>
                                     <input type="radio" id="boy" name="trainer" value="Boy" checked/>
                                     <label for="boy">Chico</label>
@@ -45,26 +48,31 @@
                                     <label for="girl">Chica</label>
                                 </div>
                             </div>
-                        </fieldset>
-                        
-                    </div>
+                        </fieldset>    
+                    
                 </div>
                 <!--<img src="https://placehold.co/790x498" alt="Main Pokemon">-->
                 
-                <div id="pokeBallContainer" style="display: contents;">
+                <div id="pokeBallContainer" style="display: flexbox;">
                     <!-- Las imágenes de Pokébola se agregarán aquí -->
                 </div>
                 
             </section>
     
-            <section id="sectionDescription" style="height: 60%;">
-                <h2>Descripción Pokémon: X</h2>
-                <div id="pokemonDescription" style="display: flexbox;">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id elit et libero faucibus facilisis vitae at odio. 
-                        Vivamus at lorem dignissim, eleifend enim a, aliquet dolor. Sed tortor ligula, interdum vitae ipsum vitae, 
-                        iaculis commodo orci. Nunc volutpat scelerisque augue ut auctor. Duis vulputate eu lorem quis posuere. 
-                        Curabitur consectetur urna in urna sagittis euismod.
+            <section id="sectionDescription" style="height: 70%;">
+                <div id="pokemonDescription" style="display: flex; flex-flow: column; align-items: center;">
+                    <h2>Welcome to Pokevision</h2>
+                    <p style="font-size: 0.8em; margin-bottom: 5%;">
+                        PokeVision es una experiencia web interactiva diseñada para 
+                        sumergirte en el fascinante mundo Pokémon. A través de elementos 
+                        multimedia envolventes, animaciones dinámicas y la aparición 
+                        sorpresa de Pokémon, este proyecto busca ofrecerte una forma 
+                        única de explorar y descubrir a tus criaturas favoritas.</p>
+                    <p style="font-size: 0.8em;">
+                        Nuestra misión es combinar tecnología y entretenimiento para que 
+                        los fans de Pokémon puedan interactuar de manera innovadora con 
+                        sus personajes favoritos. ¿Estás listo para embarcarte en esta 
+                        aventura digital? ¡Atrapa la emoción con PokeVision!    
                     </p>
                 </div>
             </section>
@@ -73,7 +81,7 @@
 
     <footer>
         <div style="display: flex;"></div>
-        <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
+            <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
     </footer>
 
     <script src="JS/addPokeballEvent.js"></script>
