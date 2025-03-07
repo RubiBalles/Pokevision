@@ -1,0 +1,271 @@
+/* styles.css */
+
+/* Varibles CSS*/
+:root{
+    --pokeTrainerTop: 0px;
+    --pokeTrainerLeft:0px;
+    --pokeGifTop: 0px;
+    --pokeGifLeft:0px;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Mulish, sans-serif;
+    background: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    width: 100%;
+    height: 20%;
+    background: #F44949;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+header img {
+    height: 64px;
+}
+nav {
+    display: flex;
+    gap: 20px;
+}
+nav a {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* Main */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Pokemon Description */
+section:nth-child(2) {
+    width: 100%;
+    max-width: 476px;
+    background: #D9D9D9;
+    padding: 20px;
+    border-radius: 10px;
+}
+h2 {
+    font-size: 2em;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+p,pre {
+    font-size: 18px;
+}
+
+button {
+    
+    background-color: #F44949;
+    color: white;
+    font-size:1em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5%;
+
+}
+button:hover{
+    background-color: #d73838;
+}
+
+/* Footer */
+footer {
+    min-height: 1em;
+    text-align: center;
+    padding: 20px;
+    background: #F44949;
+    color: white;
+}
+
+#pokeSprite {
+    max-width: 100%;
+    height: auto;
+}
+/* Estilo básico para las secciones */
+#sectionVideo {
+    flex: 3;                  /* Hace que cada sección ocupe el mismo espacio */
+    padding: 20px;            /* Espaciado interno */
+}
+
+#sectionDescription{
+    flex: 1;                  /* Hace que cada sección ocupe el mismo espacio */
+    padding: 20px;            /* Espaciado interno */
+}
+
+/* Pokemon Thumbnails */
+#pokeBallContainer {
+    display: grid; /* Usamos Grid en lugar de Flex */
+    grid-template-columns: repeat(6, 1fr); /* 4 columnas de tamaño igual */
+    gap: 10px; /* Espacio entre las imágenes */
+    margin-top: 10px;
+    justify-content: center;
+}
+#pokeBallContainer img {
+    width: 100%; /* Hace que las imágenes se ajusten al 100% de su celda */
+    max-width: 126px; /* Tamaño máximo de cada imagen */
+    border-radius: 10px;
+}
+
+#gifOverlay,
+#pokeTrainer {
+    position: absolute;
+    z-index: 10;
+}
+
+#gifOverlay {
+    width: 10%;
+    height: 20%;
+    display: block; /* Se mostrará encima del video */
+    top: 40%; /* Centrado verticalmente */
+    left: 70%; /* Centrado horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste perfecto al centro */
+}
+
+#pokeTrainer {
+    width: 30%;
+    height: 35%;
+    display: block; /* Se mostrará encima del video */
+    top: 60%; /* Puedes ajustar esta posición */
+    left: 15%; /* Puedes ajustar esta posición */
+     /*transform: translate(-50%, -50%); Ajuste perfecto */
+}
+
+.container {
+    display: flex;            /* Usa flexbox para disposición horizontal */
+    justify-content: space-between; /* Espacio entre las secciones */
+    gap: 20px;                /* Espacio entre las secciones, opcional */
+}
+
+.pokeType{
+    width: 50%;
+    height: 20%;
+}
+
+/*Imagen de la pokeball*/
+.pokeball {
+    width: 5%;
+    height: 5%;
+    display: none;
+    position: absolute;
+    top: 60%;  /* Inicialmente, la pokebola está en la misma posición que el pokeTrainer */
+    left: 15%; /* Inicialmente, la pokebola está en la misma posición que el pokeTrainer */
+    width: 50px;
+    height: 50px;
+    transition: none; /* Animación suave para el movimiento */
+    z-index: 5;
+}
+
+/*Clase aniamción lanzar pokeball*/
+.pokeball.launch {
+    display: block;
+    animation: launch 1s forwards;
+}
+
+/*Clase Gif chiquito*/
+.intoPokeball{
+    animation: intoPokeball 1s forwards;
+}
+
+/* Clase para la animación de balanceo */
+.pokeball.shake {
+    animation: shake 1s ease-in-out 3; /* Se balancea 3 veces */
+    animation-fill-mode: forwards;
+}
+
+@keyframes launch {
+    from {
+        top: 60%;
+        left: 15%;
+    }
+    50% {transform: rotate(720deg);}
+    to {
+        top: 40%;
+        left: 70%;
+    }
+}
+
+@keyframes shake {
+    from {
+        top: 40%;
+        left: 70%;
+    }
+    to {
+        top: 40%;
+        left: 70%;
+    }
+    0%, 100% { transform: rotate(0deg); } /* Posición inicial y final */
+    25% { transform: rotate(-15deg); }   /* Inclinación izquierda */
+    50% { transform: rotate(15deg); }    /* Inclinación derecha */
+    75% { transform: rotate(-10deg); }   /* Inclinación menos pronunciada */
+}
+
+@keyframes intoPokeball{
+    to {
+        scale: 0.1 0.1;
+        display: none;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+    section:nth-child(2) {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    section:nth-child(1) div img {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 16px;
+    }
+    section:nth-child(1) div img {
+        width: 80px;
+        height: 80px;
+    }
+}
