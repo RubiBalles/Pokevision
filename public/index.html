@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokevision</title>
-    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <img src="src/img/Pokevision.png" alt="Logo">
+        <img src="/img/Pokevision.png" alt="Logo">
         <nav>
             <a href="https://sudhanshu-ambastha.github.io/Pokemon-3D/">Pokemon3D</a>
             <a href="https://www.pokemon.com/es/pokedex">PokeGuia</a>
@@ -16,82 +16,29 @@
     </header>
 
     <main>
-        <div class="container">
-            <section id="sectionVideo">
-                <div id="videoContainer" style="position: relative; width: 100%; height: 65%;">
-                    <video id="myVideo" width="100%" height="100%" autoplay muted>
-                        <source src="src/video/video.mp4" type="video/mp4">
-                        Tu navegador no soporta el elemento de video.
-                        <track kind="chapters" label="chapters" src="src/tracks/chapters.vtt" default>
-                    </video>
-                    <img id="gifOverlay" src="" style="display: none; z-index: 10;">
-                    <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png" style="display: none; z-index: 10;">
-                    <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
-                </div>
-                <div id="botonera" style="  display: grid;
-  grid-template-columns: auto auto; margin: 1%;">
-                    
-                        <button id="addPokeBallBtn">Añadir Pokébola</button>
-                        <button id="continueVideo" hidden="true">Reanudar</button>
-                    
+        <section>
+            <img src="https://placehold.co/790x498" alt="Main Pokemon">
+            <div id="pokeBallContainer">
+                <!-- Las imágenes de Pokébola se agregarán aquí -->
+            </div>
+            <button id="addPokeBallBtn">Añadir Pokébola</button>
+        </section>
 
-                    
-                        <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
-                        <fieldset style="align-items: center;">
-                            <div>
-                                <div>
-                                    <input type="radio" id="boy" name="trainer" value="Boy" checked/>
-                                    <label for="boy">Chico</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="girl" name="trainer" value="Girl" />
-                                    <label for="girl">Chica</label>
-                                </div>
-                            </div>
-                        </fieldset>    
-                    
-                </div>
-                <!--<img src="https://placehold.co/790x498" alt="Main Pokemon">-->
-                
-                <div id="pokeBallContainer" style="display: flexbox;">
-                    <!-- Las imágenes de Pokébola se agregarán aquí -->
-                </div>
-                
-            </section>
-    
-            <section id="sectionDescription" style="height: 70%;">
-                <div id="pokemonDescription" style="display: flex; flex-flow: column; align-items: center;">
-                    <h2>Welcome to Pokevision</h2>
-                    <p style="font-size: 0.8em; margin-bottom: 5%;">
-                        PokeVision es una experiencia web interactiva diseñada para 
-                        sumergirte en el fascinante mundo Pokémon. A través de elementos 
-                        multimedia envolventes, animaciones dinámicas y la aparición 
-                        sorpresa de Pokémon, este proyecto busca ofrecerte una forma 
-                        única de explorar y descubrir a tus criaturas favoritas.</p>
-                    <p style="font-size: 0.8em;">
-                        Nuestra misión es combinar tecnología y entretenimiento para que 
-                        los fans de Pokémon puedan interactuar de manera innovadora con 
-                        sus personajes favoritos. ¿Estás listo para embarcarte en esta 
-                        aventura digital? ¡Atrapa la emoción con PokeVision!    
-                    </p>
-                </div>
-            </section>
-        </div>
+        <section>
+            <h2>Descripción Pokémon: X</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id elit et libero faucibus facilisis vitae at odio. 
+                Vivamus at lorem dignissim, eleifend enim a, aliquet dolor. Sed tortor ligula, interdum vitae ipsum vitae, 
+                iaculis commodo orci. Nunc volutpat scelerisque augue ut auctor. Duis vulputate eu lorem quis posuere. 
+                Curabitur consectetur urna in urna sagittis euismod.
+            </p>
+        </section>
     </main>
 
     <footer>
-        <div style="display: flex;"></div>
-            <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
+        <p>&copy; 2023 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez and Miquel Ángel Montero Pazmiño</p>
     </footer>
 
-    <script src="JS/addPokeballEvent.js"></script>
-    <script src="JS/changeTrainerSprite.js"></script>
-    <script src="JS/continueVideo.js"></script>
-    <script src="JS/getPokeAPI.js"></script>
-    <script src="JS/lanzarPokeBall.js"></script>
-    <script src="JS/setImgPossition.js"></script>
-    <script src="JS/showImage.js"></script>
-    <script src="JS/videoChapters.js"></script>
-    
+    <script src="script.js"></script>
 </body>
 </html>
