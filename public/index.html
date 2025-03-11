@@ -8,9 +8,9 @@
 </head>
 <body>
     <header>
-        <img src="src/img/Pokevision.png" alt="Logo">
+     <img src="src/img/Pokevision.png" alt="Logo">
         <nav>
-            <a href="https://sudhanshu-ambastha.github.io/Pokemon-3D/">Pokemon3D</a>
+            <a href="https://projectpokemon.org/home/docs/spriteindex_148/3d-models-generation-1-pok%C3%A9mon-r90/">Pokemon3D</a>
             <a href="https://www.pokemon.com/es/pokedex">PokeGuia</a>
         </nav>
     </header>
@@ -18,6 +18,12 @@
     <main>
         <div class="container">
             <section id="sectionVideo">
+                <div id="routeSelector">
+                    <label for="route">Elige tu ruta:</label>
+                    <select id="route">
+                        <option value="tokyo">Tokio</option>
+                        <option value="sweden">Suecia</option>
+                    </select>
                 <div id="videoContainer" style="position: relative; width: 100%; height: 65%;">
                     <video id="myVideo" width="100%" height="100%" autoplay muted>
                         <source src="src/video/video.mp4" type="video/mp4">
