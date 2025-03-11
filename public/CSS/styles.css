@@ -135,6 +135,28 @@ footer {
     z-index: 10;
 }
 
+#routeSelector {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#routeSelector select {
+    background-color: #F44949;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px;
+}
+
+#routeSelector select:hover {
+    background-color: #d73838;
+}
+
 #gifOverlay {
     width: 10%;
     height: 20%;
