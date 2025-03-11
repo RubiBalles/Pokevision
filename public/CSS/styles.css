@@ -112,9 +112,14 @@ footer {
 
 #sectionDescription{
     flex: 1;                  /* Hace que cada sección ocupe el mismo espacio */
-    padding: 20px;            /* Espaciado interno */
+    padding: 20px;  
+    height: 70%;          /* Espaciado interno */
 }
-
+#pokemonDescription{
+    display: flex; 
+    flex-flow: column; 
+    align-items: center;
+}
 /* Pokemon Thumbnails */
 #pokeBallContainer {
     display: grid; /* Usamos Grid en lugar de Flex */
@@ -135,6 +140,12 @@ footer {
     z-index: 10;
 }
 
+#botonera{
+    display: grid;
+    grid-template-columns: auto auto; 
+    margin: 1%;
+}
+/* Video selector */
 #routeSelector {
     margin-bottom: 20px;
     display: flex;
@@ -181,11 +192,24 @@ footer {
     gap: 20px;                /* Espacio entre las secciones, opcional */
 }
 
+#videoContainer{
+    position: relative; 
+    width: 100%; 
+    height: 65%;
+}
+
+#myVideo {
+    width: 100%;
+    height: 100%;
+}
 .pokeType{
     width: 50%;
     height: 20%;
 }
-
+#pokeTrainer{
+    display: none;
+     z-index: 10;
+}
 /*Imagen de la pokeball*/
 .pokeball {
     width: 5%;
@@ -199,7 +223,13 @@ footer {
     transition: none; /* Animación suave para el movimiento */
     z-index: 5;
 }
-
+.foot{
+    display: flex;
+}
+#PDescription{
+    font-size: 0.8em; 
+    margin-bottom: 5%;
+}
 /*Clase aniamción lanzar pokeball*/
 .pokeball.launch {
     display: block;
