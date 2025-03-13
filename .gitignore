@@ -1,3 +1,6 @@
 *.mp4
 *.png
 node_modules
+# Ignorar los videos
+tokio10min.mp4
+tokio10min.webm
