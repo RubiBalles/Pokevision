@@ -9,9 +9,9 @@
 </head>
 <body>
     <header>
-        <img src="src/img/Pokevision.png" alt="Logo">
+     <img src="src/img/Pokevision.png" alt="Logo">
         <nav>
-            <a href="https://sudhanshu-ambastha.github.io/Pokemon-3D/">Pokemon3D</a>
+            <a href="https://projectpokemon.org/home/docs/spriteindex_148/3d-models-generation-1-pok%C3%A9mon-r90/">Pokemon3D</a>
             <a href="https://www.pokemon.com/es/pokedex">PokeGuia</a>
         </nav>
     </header>
@@ -19,18 +19,23 @@
     <main>
         <div class="container">
             <section id="sectionVideo">
-                <div id="videoContainer" style="position: relative; width: 100%; height: 65%;">
-                    <video id="myVideo" width="100%" height="100%" autoplay muted>
+                <div id="routeSelector">
+                    <label for="route">Elige tu ruta:</label>
+                    <select id="route">
+                        <option value="tokyo">Tokio</option>
+                        <option value="sweden">Suecia</option>
+                    </select>
+                <div id="videoContainer">
+                    <video id="myVideo" autoplay muted>
                         <source src="src/video/video.mp4" type="video/mp4">
                         Tu navegador no soporta el elemento de video.
                         <track kind="chapters" label="chapters" src="src/tracks/chapters.vtt" default>
                     </video>
-                    <img id="gifOverlay" src="" style="display: none; z-index: 10;">
-                    <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png" style="display: none; z-index: 10;">
+                    <img id="gifOverlay" src="">
+                    <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
                     <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
                 </div>
-                <div id="botonera" style="  display: grid;
-  grid-template-columns: auto auto; margin: 1%;">
+                <div id="botonera">
                     
                         <button id="addPokeBallBtn">Añadir Pokébola</button>
                         <button id="continueVideo" hidden="true">Reanudar</button>
@@ -54,22 +59,22 @@
                 </div>
                 <!--<img src="https://placehold.co/790x498" alt="Main Pokemon">-->
                 
-                <div id="pokeBallContainer" style="display: flexbox;">
+                <div id="pokeBallContainer">
                     <!-- Las imágenes de Pokébola se agregarán aquí -->
                 </div>
                 
             </section>
     
-            <section id="sectionDescription" style="height: 70%;">
-                <div id="pokemonDescription" style="display: flex; flex-flow: column; align-items: center;">
+            <section id="sectionDescription">
+                <div id="pokemonDescription">
                     <h2>Welcome to Pokevision</h2>
-                    <p style="font-size: 0.8em; margin-bottom: 5%;">
+                    <p id="PDescription">
                         PokeVision es una experiencia web interactiva diseñada para 
                         sumergirte en el fascinante mundo Pokémon. A través de elementos 
                         multimedia envolventes, animaciones dinámicas y la aparición 
                         sorpresa de Pokémon, este proyecto busca ofrecerte una forma 
-                        única de explorar y descubrir a tus criaturas favoritas.</p>
-                    <p style="font-size: 0.8em;">
+                        única de explorar y descubrir a tus criaturas favoritas.
+                        <br>
                         Nuestra misión es combinar tecnología y entretenimiento para que 
                         los fans de Pokémon puedan interactuar de manera innovadora con 
                         sus personajes favoritos. ¿Estás listo para embarcarte en esta 
@@ -81,7 +86,7 @@
     </main>
 
     <footer>
-        <div style="display: flex;"></div>
+        <div id="foot"></div>
             <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
     </footer>
 
@@ -92,6 +97,7 @@
     <script src="JS/lanzarPokeBall.js"></script>
     <script src="JS/showImage.js"></script>
     <script src="JS/videoChapters.js"></script>
+    <script src="JS/VideoSelector.js"></script>
     
 </body>
 </html>
