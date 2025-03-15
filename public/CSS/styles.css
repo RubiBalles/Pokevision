@@ -416,7 +416,9 @@ footer {
         flex-direction: column;
         align-items: center;
     }
-
+    #botonera{
+        flex-wrap: wrap;
+    }
     nav {
         gap: 15px;
     }
