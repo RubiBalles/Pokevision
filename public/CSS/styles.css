@@ -1,12 +1,13 @@
 /* styles.css */
 
-/* Varibles CSS*/
-:root{
+/* Variables CSS */
+:root {
     --pokeTrainerTop: 0px;
-    --pokeTrainerLeft:0px;
+    --pokeTrainerLeft: 0px;
     --pokeGifTop: 0px;
-    --pokeGifLeft:0px;
+    --pokeGifLeft: 0px;
 }
+
 /* General Reset */
 * {
     margin: 0;
@@ -22,6 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    min-width: 100vw;
 }
 
 /* Header */
@@ -36,6 +38,7 @@ header {
 }
 header img {
     height: 64px;
+    max-width: 100%;
 }
 nav {
     display: flex;
@@ -71,23 +74,21 @@ h2 {
     font-weight: 700;
     margin-bottom: 10px;
 }
-p,pre {
+p, pre {
     font-size: 18px;
 }
 
 button {
-    
     background-color: #F44949;
     color: white;
-    font-size:1em;
+    font-size: 1em;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin: 5%;
-
 }
-button:hover{
+button:hover {
     background-color: #d73838;
 }
 
@@ -100,37 +101,71 @@ footer {
     color: white;
 }
 
+/* Image and Video Containers */
 #pokeSprite {
     max-width: 100%;
     height: auto;
 }
+
 /* Estilo básico para las secciones */
 #sectionVideo {
-    flex: 3;                  /* Hace que cada sección ocupe el mismo espacio */
-    padding: 20px;            /* Espaciado interno */
+    flex: 3;
+    padding: 20px;
 }
 
-#sectionDescription{
-    flex: 1;                  /* Hace que cada sección ocupe el mismo espacio */
-    padding: 20px;  
-    height: 70%;          /* Espaciado interno */
+#sectionDescription {
+    flex: 1;
+    padding: 20px;
+    max-height: 70%;
+    width: 100%;
+    max-width: 476px;
+    box-sizing: border-box;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #F44949 #D9D9D9;
 }
-#pokemonDescription{
-    display: flex; 
-    flex-flow: column; 
+
+/* Scroll para Chrome, Safari y Edge */
+#sectionDescription::-webkit-scrollbar {
+    width: 8px;
+}
+
+#sectionDescription::-webkit-scrollbar-thumb {
+    background-color: #F44949;
+    border-radius: 10px;
+}
+
+#sectionDescription::-webkit-scrollbar-thumb:hover {
+    background-color: #d73838;
+}
+
+#sectionDescription::-webkit-scrollbar-track {
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+#pokemonDescription {
+    display: flex;
+    flex-flow: column;
     align-items: center;
 }
+
+#PDescription {
+    font-size: 0.8em;
+    margin-bottom: 5%;
+}
+
 /* Pokemon Thumbnails */
 #pokeBallContainer {
-    display: grid; /* Usamos Grid en lugar de Flex */
-    grid-template-columns: repeat(6, 1fr); /* 4 columnas de tamaño igual */
-    gap: 10px; /* Espacio entre las imágenes */
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
     margin-top: 10px;
     justify-content: center;
 }
 #pokeBallContainer img {
-    width: 100%; /* Hace que las imágenes se ajusten al 100% de su celda */
-    max-width: 126px; /* Tamaño máximo de cada imagen */
+    width: 100%;
+    max-width: 126px;
     border-radius: 10px;
 }
 
@@ -140,11 +175,12 @@ footer {
     z-index: 10;
 }
 
-#botonera{
+#botonera {
     display: grid;
-    grid-template-columns: auto auto; 
+    grid-template-columns: auto auto;
     margin: 1%;
 }
+
 /* Video selector */
 #routeSelector {
     margin-bottom: 20px;
@@ -171,30 +207,29 @@ footer {
 #gifOverlay {
     width: 10%;
     height: 20%;
-    display: block; /* Se mostrará encima del video */
-    top: 40%; /* Centrado verticalmente */
-    left: 70%; /* Centrado horizontalmente */
-    transform: translate(-50%, -50%); /* Ajuste perfecto al centro */
+    display: block;
+    top: 40%;
+    left: 70%;
+    transform: translate(-50%, -50%);
 }
 
 #pokeTrainer {
     width: 30%;
     height: 35%;
-    display: block; /* Se mostrará encima del video */
-    top: 60%; /* Puedes ajustar esta posición */
-    left: 15%; /* Puedes ajustar esta posición */
-     /*transform: translate(-50%, -50%); Ajuste perfecto */
+    display: block;
+    top: 60%;
+    left: 15%;
 }
 
 .container {
-    display: flex;            /* Usa flexbox para disposición horizontal */
-    justify-content: space-between; /* Espacio entre las secciones */
-    gap: 20px;                /* Espacio entre las secciones, opcional */
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-#videoContainer{
-    position: relative; 
-    width: 100%; 
+#videoContainer {
+    position: relative;
+    width: 100%;
     height: 65%;
 }
 
@@ -202,49 +237,91 @@ footer {
     width: 100%;
     height: 100%;
 }
-.pokeType{
+
+.pokeType {
     width: 50%;
     height: 20%;
 }
-#pokeTrainer{
+
+#pokeTrainer {
     display: none;
-     z-index: 10;
+    z-index: 10;
 }
+
 /*Imagen de la pokeball*/
 .pokeball {
     width: 5%;
     height: 5%;
     display: none;
     position: absolute;
-    top: 60%;  /* Inicialmente, la pokebola está en la misma posición que el pokeTrainer */
-    left: 15%; /* Inicialmente, la pokebola está en la misma posición que el pokeTrainer */
+    top: 60%;
+    left: 15%;
     width: 50px;
     height: 50px;
-    transition: none; /* Animación suave para el movimiento */
+    transition: none;
     z-index: 5;
 }
-.foot{
-    display: flex;
-}
-#PDescription{
-    font-size: 0.8em; 
-    margin-bottom: 5%;
-}
-/*Clase aniamción lanzar pokeball*/
+
+/*Clase animación lanzar pokeball*/
 .pokeball.launch {
     display: block;
     animation: launch 1s forwards;
 }
 
 /*Clase Gif chiquito*/
-.intoPokeball{
+.intoPokeball {
     animation: intoPokeball 1s forwards;
 }
 
 /* Clase para la animación de balanceo */
 .pokeball.shake {
-    animation: shake 1s ease-in-out 3; /* Se balancea 3 veces */
+    animation: shake 1s ease-in-out 3;
     animation-fill-mode: forwards;
+}
+
+/* Radio buttons style */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #F44949;
+    border-radius: 8px;
+    background-color: #D9D9D9;
+    max-width: 200px;
+    margin: auto;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.8em;
+    font-weight: 600;
+    color: black;
+}
+
+.radio-option input[type="radio"] {
+    display: none;
+}
+
+.radio-option label {
+    padding: 5px 10px;
+    border: 1px solid #F44949;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.radio-option label:hover {
+    background-color: #F44949;
+    color: white;
+}
+
+.radio-option input[type="radio"]:checked + label {
+    background-color: #F44949;
+    color: white;
 }
 
 @keyframes launch {
@@ -252,7 +329,9 @@ footer {
         top: 60%;
         left: 15%;
     }
-    50% {transform: rotate(720deg);}
+    50% {
+        transform: rotate(720deg);
+    }
     to {
         top: 40%;
         left: 70%;
@@ -268,56 +347,204 @@ footer {
         top: 40%;
         left: 70%;
     }
-    0%, 100% { transform: rotate(0deg); } /* Posición inicial y final */
-    25% { transform: rotate(-15deg); }   /* Inclinación izquierda */
-    50% { transform: rotate(15deg); }    /* Inclinación derecha */
-    75% { transform: rotate(-10deg); }   /* Inclinación menos pronunciada */
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
 }
 
-@keyframes intoPokeball{
+@keyframes intoPokeball {
     to {
         scale: 0.1 0.1;
         display: none;
     }
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    main {
-        flex-direction: column;
-        align-items: center;
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    header img {
+        height: 50px;
     }
-    section:nth-child(2) {
-        width: 90%;
+
+    nav a {
+        font-size: 18px;
+    }
+
+    #routeSelector select {
+        width: 180px;
+    }
+
+    #pokeTrainer {
+        width: 25%;
+        height: 30%;
+    }
+
+    #videoContainer {
+        height: 50%;
+    }
+
+    #sectionVideo {
+        flex: 2;
+    }
+
+    #sectionDescription {
+        max-width: 400px;
+    }
+
+    #pokeBallContainer {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 
 @media (max-width: 768px) {
     header {
         flex-direction: column;
-        height: auto;
-        padding: 10px;
+        align-items: center;
     }
+
     nav {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
+        gap: 15px;
     }
-    section:nth-child(1) div img {
-        width: 100px;
-        height: 100px;
+
+    #routeSelector {
+        width: 100%;
+    }
+
+    #pokeTrainer {
+        width: 50%;
+        height: 45%;
+    }
+
+    #sectionVideo {
+        flex: 1;
+    }
+
+    #pokeBallContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 
 @media (max-width: 480px) {
-    h2 {
-        font-size: 18px;
+    header img {
+        height: 40px;
     }
-    p {
+
+    nav a {
         font-size: 16px;
     }
-    section:nth-child(1) div img {
-        width: 80px;
-        height: 80px;
+
+    #pokeTrainer {
+        width: 60%;
+        height: 50%;
+    }
+
+    #routeSelector select {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #pokeBallContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #sectionDescription {
+        max-width: 90%;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    footer p {
+        font-size: 14px;
     }
 }
+
+/**************************/
+/* Estilos para el botón de hamburguesa */
+/* Estilos para el botón de hamburguesa */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Estilos del menú para pantallas grandes */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+/* Cuando la pantalla es pequeña, ocultamos el menú y mostramos el botón de hamburguesa */
+@media (max-width: 768px) {
+    nav {
+        display: none; /* Ocultamos el menú en pantallas pequeñas */
+        position: absolute;
+        top: 80px; /* Ajuste la posición vertical para que esté por debajo del header */
+        left: 0;
+        background-color: #F44949;
+        width: 100%;
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+    }
+
+    nav a {
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+    }
+
+    nav a:hover {
+        background-color: #d73838;
+    }
+
+    /* Mostramos el icono de hamburguesa */
+    .menu-toggle {
+        display: block; /* Mostramos el icono de hamburguesa */
+    }
+
+    /* Estilos para el logo */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: auto;
+    }
+
+    header img {
+        height: 40px;
+    }
+
+    /* Cuando el menú se despliega */
+    nav.show {
+        display: flex;
+    }
+}
+

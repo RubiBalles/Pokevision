@@ -8,13 +8,16 @@
 </head>
 <body>
     <header>
-     <img src="src/img/Pokevision.png" alt="Logo">
-        <nav>
+        <img src="src/img/Pokevision.png" alt="Logo">
+        <button id="menuToggle" class="menu-toggle">
+            &#9776; <!-- Icono de hamburguesa -->
+        </button>
+        <nav id="menu">
             <a href="https://projectpokemon.org/home/docs/spriteindex_148/3d-models-generation-1-pok%C3%A9mon-r90/">Pokemon3D</a>
             <a href="https://www.pokemon.com/es/pokedex">PokeGuia</a>
         </nav>
     </header>
-
+    
     <main>
         <div class="container">
             <section id="sectionVideo">
@@ -35,29 +38,21 @@
                     <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
                 </div>
                 <div id="botonera">
-                    
-                        <button id="addPokeBallBtn">Añadir Pokébola</button>
-                        <button id="continueVideo" hidden="true">Reanudar</button>
-                    
 
-                    
+                        <button id="continueVideo" hidden="true">Reanudar</button>
                         <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
-                        <fieldset style="align-items: center;">
-                            <div>
-                                <div>
-                                    <input type="radio" id="boy" name="trainer" value="Boy" checked/>
-                                    <label for="boy">Chico</label>
-                                </div>
-                                <div>
-                                    <input type="radio" id="girl" name="trainer" value="Girl" />
-                                    <label for="girl">Chica</label>
-                                </div>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="boy" name="trainer" value="Boy" checked/>
+                                <label for="boy">Hombre</label>
                             </div>
-                        </fieldset>    
+                            <div class="radio-option">
+                                <input type="radio" id="girl" name="trainer" value="Girl" />
+                                <label for="girl">Mujer</label>
+                            </div>
+                        </div>                 
                     
-                </div>
-                <!--<img src="https://placehold.co/790x498" alt="Main Pokemon">-->
-                
+                </div>                
                 <div id="pokeBallContainer">
                     <!-- Las imágenes de Pokébola se agregarán aquí -->
                 </div>
@@ -98,6 +93,7 @@
     <script src="JS/showImage.js"></script>
     <script src="JS/videoChapters.js"></script>
     <script src="JS/VideoSelector.js"></script>
+    <script src="JS/Menu.js"></script>
     
 </body>
 </html>
