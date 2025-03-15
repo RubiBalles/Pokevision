@@ -1,7 +1,5 @@
 // script.js
 var LAST_INSERT;
-document.getElementById('addPokeBallBtn').addEventListener('click', increasePokemonTeam);
-
 function increasePokemonTeam(){// Creamos un nuevo contenedor
     if(LAST_INSERT==ACT_POKEMON_SPRITE)
         return;
