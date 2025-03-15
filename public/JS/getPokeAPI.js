@@ -1,5 +1,3 @@
-
-
 const GENERIC_URL="https://projectpokemon.org/images/normal-sprite/"
 const GEN_8_URL="https://projectpokemon.org/images/sprites-models/swsh-normal-sprites/"
 const GEN_9_STATIC_URL="https://projectpokemon.org/images/sprites-models/sv-sprites-regular/"
