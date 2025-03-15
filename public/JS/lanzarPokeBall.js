@@ -14,8 +14,6 @@ window.onload = function() {
     continueButton.addEventListener('click', function() {
         captureButton.hidden = true; // Ocultar el botón al reanudar el video
     });
-
-    // Simulación de la aparición de un Pokémon (ejemplo)
     setTimeout(showCaptureButton, 5000); // Aparece después de 5 segundos (ejemplo)
 };
 
