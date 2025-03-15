@@ -111,7 +111,6 @@ footer {
 /* Estilo básico para las secciones */
 #sectionVideo {
     flex: 3;
-    padding: 20px;
 }
 
 #sectionDescription {
@@ -449,7 +448,9 @@ footer {
     header img {
         height: 40px;
     }
-
+    #botonera{
+        flex-wrap: wrap;
+    }
     nav a {
         font-size: 16px;
     }
@@ -482,7 +483,6 @@ footer {
 }
 
 /**************************/
-/* Estilos para el botón de hamburguesa */
 /* Estilos para el botón de hamburguesa */
 .menu-toggle {
     display: none;
