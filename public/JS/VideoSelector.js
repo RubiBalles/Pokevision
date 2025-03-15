@@ -1,11 +1,16 @@
 document.getElementById('route').addEventListener('change', function(event) {
-    const cityImage = document.getElementById('cityImage');
+    const videoPlayer = document.getElementById('myVideo')
+    //Cogemos todas las sources del viedo
+    const videoSrc =Array.from(videoPlayer.getElementsByTagName("source"));
+    const base_route=`src/videos/${this.value}10min.`
+    //Cambiamos las sources que hagan referencias a videos y colocamos los formatos
+    //correspondientes
+    videoSrc.forEach(element => {
+        if (element.type=="video/mp4")
+            element.src=base_route+"mp4"
+        else if (element.type="video/webm")
+            element.src=base_route+"webm"
+    });
 
-    if (event.target.value === 'tokyo') {
-        cityImage.src = 'https://placehold.co/790x498.png?text=Tokio'; // Imagen para Tokio
-    } else if (event.target.value === 'sweden') {
-        cityImage.src = 'https://placehold.co/790x498.png?text=Suecia'; // Imagen para Suecia
-    } else {
-        cityImage.src = 'https://placehold.co/790x498'; // Imagen por defecto
-    }
+    videoPlayer.load()
 });
