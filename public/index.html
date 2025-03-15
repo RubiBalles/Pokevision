@@ -1,99 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokevision</title>
-    <link rel="stylesheet" href="CSS/styles.css">
-</head>
-<body>
-    <header>
-        <img src="src/img/Pokevision.png" alt="Logo">
-        <button id="menuToggle" class="menu-toggle">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Pokevision</title>
+      <link rel="stylesheet" href="CSS/styles.css">
+   </head>
+   <body>
+      <header>
+         <img src="src/img/Pokevision.png" alt="Logo">
+         <button id="menuToggle" class="menu-toggle">
             &#9776; <!-- Icono de hamburguesa -->
-        </button>
-        <nav id="menu">
+         </button>
+         <nav id="menu">
             <a href="https://projectpokemon.org/home/docs/spriteindex_148/3d-models-generation-1-pok%C3%A9mon-r90/">Pokemon3D</a>
             <a href="https://www.pokemon.com/es/pokedex">PokeGuia</a>
-        </nav>
-    </header>
-    
-    <main>
-        <div class="container">
-            <section id="sectionVideo">
-                <div id="routeSelector">
-                    <label for="route">Elige tu ruta:</label>
-                    <select id="route">
-                        <option value="tokyo">Tokio</option>
-                        <option value="sweden">Suecia</option>
-                    </select>
-                <div id="videoContainer">
-                    <video id="myVideo" autoplay muted>
-                        <source src="src/video/video.mp4" type="video/mp4">
-                        Tu navegador no soporta el elemento de video.
-                        <track kind="chapters" label="chapters" src="src/tracks/chapters.vtt" default>
-                    </video>
-                    <img id="gifOverlay" src="">
-                    <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
-                    <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
-                </div>
-                <div id="botonera">
-
-                        <button id="continueVideo" hidden="true">Reanudar</button>
-                        <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
-                        <div class="radio-group">
-                            <div class="radio-option">
-                                <input type="radio" id="boy" name="trainer" value="Boy" checked/>
-                                <label for="boy">Hombre</label>
-                            </div>
-                            <div class="radio-option">
-                                <input type="radio" id="girl" name="trainer" value="Girl" />
-                                <label for="girl">Mujer</label>
-                            </div>
-                        </div>                 
-                    
-                </div>                
-                <div id="pokeBallContainer">
-                    <!-- Las imágenes de Pokébola se agregarán aquí -->
-                </div>
-                
-            </section>
-    
-            <section id="sectionDescription">
-                <div id="pokemonDescription">
-                    <h2>Welcome to Pokevision</h2>
-                    <p id="PDescription">
-                        PokeVision es una experiencia web interactiva diseñada para 
-                        sumergirte en el fascinante mundo Pokémon. A través de elementos 
-                        multimedia envolventes, animaciones dinámicas y la aparición 
-                        sorpresa de Pokémon, este proyecto busca ofrecerte una forma 
-                        única de explorar y descubrir a tus criaturas favoritas.
-                        <br>
-                        Nuestra misión es combinar tecnología y entretenimiento para que 
-                        los fans de Pokémon puedan interactuar de manera innovadora con 
-                        sus personajes favoritos. ¿Estás listo para embarcarte en esta 
-                        aventura digital? ¡Atrapa la emoción con PokeVision!    
-                    </p>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <footer>
-        <div id="foot"></div>
-            <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
-    </footer>
-
-    <script src="JS/addPokeballEvent.js"></script>
-    <script src="JS/changeTrainerSprite.js"></script>
-    <script src="JS/continueVideo.js"></script>
-    <script src="JS/getPokeAPI.js"></script>
-    <script src="JS/lanzarPokeBall.js"></script>
-    <script src="JS/setImgPossition.js"></script>
-    <script src="JS/showImage.js"></script>
-    <script src="JS/videoChapters.js"></script>
-    <script src="JS/VideoSelector.js"></script>
-    <script src="JS/Menu.js"></script>
-    
-</body>
+         </nav>
+      </header>
+      <main>
+         <div class="container">
+         <section id="sectionVideo">
+            <div id="routeSelector">
+               <label for="route">Elige tu ruta:</label>
+               <select id="route">
+                  <option value="tokyo">Tokio</option>
+                  <option value="sweden">Suecia</option>
+               </select>
+               <div id="videoContainer">
+                  <video id="myVideo" autoplay muted>
+                     <source src="src/video/video.mp4" type="video/mp4">
+                     Tu navegador no soporta el elemento de video.
+                     <track kind="chapters" label="chapters" src="src/tracks/chapters.vtt" default>
+                  </video>
+                  <img id="gifOverlay" src="">
+                  <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
+                  <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
+               </div>
+               <div id="botonera">
+                  <button id="continueVideo" hidden="true">Reanudar</button>
+                  <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
+                  <div class="radio-group">
+                     <div class="radio-option">
+                        <input type="radio" id="boy" name="trainer" value="Boy" checked/>
+                        <label for="boy">Hombre</label>
+                     </div>
+                     <div class="radio-option">
+                        <input type="radio" id="girl" name="trainer" value="Girl" />
+                        <label for="girl">Mujer</label>
+                     </div>
+                  </div>
+               </div>
+               <div id="pokeBallContainer">
+                  <!-- Las imágenes de Pokébola se agregarán aquí -->
+               </div>
+         </section>
+         <section id="sectionDescription">
+         <div id="pokemonDescription">
+         <h2>Welcome to Pokevision</h2>
+         <p id="PDescription">
+         PokeVision es una experiencia web interactiva diseñada para 
+         sumergirte en el fascinante mundo Pokémon. A través de elementos 
+         multimedia envolventes, animaciones dinámicas y la aparición 
+         sorpresa de Pokémon, este proyecto busca ofrecerte una forma 
+         única de explorar y descubrir a tus criaturas favoritas.
+         <br>
+         Nuestra misión es combinar tecnología y entretenimiento para que 
+         los fans de Pokémon puedan interactuar de manera innovadora con 
+         sus personajes favoritos. ¿Estás listo para embarcarte en esta 
+         aventura digital? ¡Atrapa la emoción con PokeVision!    
+         </p>
+         </div>
+         </section>
+         </div>
+      </main>
+      <footer>
+         <div id="foot"></div>
+         <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
+      </footer>
+      <script src="JS/addPokeballEvent.js"></script>
+      <script src="JS/changeTrainerSprite.js"></script>
+      <script src="JS/continueVideo.js"></script>
+      <script src="JS/getPokeAPI.js"></script>
+      <script src="JS/lanzarPokeBall.js"></script>
+      <script src="JS/setImgPossition.js"></script>
+      <script src="JS/showImage.js"></script>
+      <script src="JS/videoChapters.js"></script>
+      <script src="JS/VideoSelector.js"></script>
+      <script src="JS/Menu.js"></script>
+   </body>
 </html>
