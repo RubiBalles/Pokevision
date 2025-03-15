@@ -21,11 +21,6 @@
          <div class="container">
          <section id="sectionVideo">
             <div id="routeSelector">
-               <label for="route">Elige tu ruta:</label>
-               <select id="route">
-                  <option value="tokio">Tokio</option>
-                  <option value="suiza">Suecia</option>
-               </select>
                <div id="videoContainer">
                   <video id="myVideo" autoplay muted>
                      <source src="src/videos/tokio10min.mp4" type="video/mp4">
@@ -38,9 +33,14 @@
                   <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
                </div>
                <div id="botonera">
+                  <label for="route">Elige tu ruta:</label>
+                  <select id="route">
+                   <option value="tokio">Tokio</option>
+                   <option value="suiza">Suecia</option>
+                  </select>
                   <button id="continueVideo" hidden="true">Reanudar</button>
                   <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
-                  <div class="radio-group">
+                  <div class="radio-group" style="display: none;">
                      <div class="radio-option">
                          <input type="radio" id="boy" name="trainer" value="Boy" checked />
                          <label for="boy">Hombre</label>
