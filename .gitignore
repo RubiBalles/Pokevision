@@ -1,4 +1,4 @@
 *.mp4
 *.png
 node_modules
-tracks
+chapters.vtt
