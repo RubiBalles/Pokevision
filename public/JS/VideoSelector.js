@@ -1,4 +1,4 @@
-document.getElementById('route').addEventListener('change', function(event) {
+document.getElementById('route').addEventListener('change', async function(event) {
     const videoPlayer = document.getElementById('myVideo')
     //Cogemos todas las sources del viedo
     const videoSrc =Array.from(videoPlayer.getElementsByTagName("source"));
@@ -11,6 +11,6 @@ document.getElementById('route').addEventListener('change', function(event) {
         else if (element.type="video/webm")
             element.src=base_route+"webm"
     });
-
+    await updateMediaTracks(this.value,1)
     videoPlayer.load()
 });

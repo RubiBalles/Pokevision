@@ -1,5 +1,6 @@
 *.mp4
 *.png
+img
 node_modules
 *.webm
 chapters.vtt
