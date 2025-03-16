@@ -14,7 +14,10 @@ for (let i = 0; i < tracks.length; i++) {
             
             if (activeCue) {
                 console.log(`Capítulo en curso: ${activeCue.text}`);
-                
+                resetPlayer()
+                const appear=Math.floor(Math.random()*5)
+                if(appear<2)
+                    return
                 // Aplicar efectos al video
                 video.pause();
                 video.style.filter = "blur(10px)";
@@ -30,6 +33,10 @@ for (let i = 0; i < tracks.length; i++) {
                 radioGroup.style.display = "flex";
             }
         });
+    }else if (tracks[i].kind=="descriptions"){
+        if(tracks[i].label.includes(id)){
+            tracks[i].mode="showing";
+        }
     }
 }
 }
