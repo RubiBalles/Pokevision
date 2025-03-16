@@ -1,12 +1,5 @@
 /* styles.css */
 
-/* Variables CSS */
-:root {
-    --pokeTrainerTop: 0px;
-    --pokeTrainerLeft: 0px;
-    --pokeGifTop: 0px;
-    --pokeGifLeft: 0px;
-}
 
 /* General Reset */
 * {
@@ -425,10 +418,6 @@ footer {
         width: 100%;
     }
 
-    #pokeTrainer {
-        width: 50%;
-        height: 45%;
-    }
 
     #sectionVideo {
         flex: 1;
@@ -436,6 +425,9 @@ footer {
 
     #pokeBallContainer {
         grid-template-columns: repeat(3, 1fr);
+    }
+    #botonera{
+        flex-wrap: wrap;
     }
 
     .container {
@@ -453,11 +445,6 @@ footer {
     }
     nav a {
         font-size: 16px;
-    }
-
-    #pokeTrainer {
-        width: 60%;
-        height: 50%;
     }
 
     #routeSelector select {

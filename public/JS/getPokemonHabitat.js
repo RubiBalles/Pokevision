@@ -4,11 +4,11 @@ async function getPokemonHabitat(habitat){
 
         const data = await response.json();
 
-        const pokeList=data.pokemon_species;
+        const pokeList=Array.from(data.pokemon_species);
 
-        const len=pokeList.length()
+        const len=pokeList.length
 
-        return getPokemonApi(pokeList[Math.floor(Math.random() * len)].name)
+        await getPokeAPI(pokeList[Math.floor(Math.random() * len)].name,true)
 }
 
 
