@@ -14,10 +14,10 @@ window.onload = function() {
     continueButton.addEventListener('click', function() {
         captureButton.hidden = true; // Ocultar el botón al reanudar el video
     });
-    setTimeout(showCaptureButton, 5000); // Aparece después de 5 segundos (ejemplo)
 };
 
 document.getElementById('capturePokemonButton').addEventListener('click', function() {
+    document.getElementById('capturePokemonButton').hidden=true
     var pokeball = document.getElementById('pokeball');
     var compStyle=getComputedStyle(document.querySelector(":root"))
 
