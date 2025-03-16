@@ -8,7 +8,8 @@ BUTTON.addEventListener("click",()=>{
         video.style.filter = "none"; // Quitar desenfoque
         pokeTrainer.style.display="none"
         pokeball.style.display="none"
+        radioGroup.style.display="none"
         VIDEO.play()
         BUTTON.hidden=true
     }
-})
+}) 
