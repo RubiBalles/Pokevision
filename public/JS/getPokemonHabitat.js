@@ -1,3 +1,5 @@
+var LAST_HABITAT;
+var LAST_INDEX;
 async function getPokemonHabitat(habitat){
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon-habitat/${habitat}`);
         if (!response.ok) throw new Error("Pokémon no encontrado");
@@ -8,7 +10,21 @@ async function getPokemonHabitat(habitat){
 
         const len=pokeList.length
 
+<<<<<<< HEAD
+        var index=Math.floor(Math.random() * len)
+
+        console.log(index)
+
+        if(habitat==LAST_HABITAT)
+            while(index==LAST_INDEX){
+                index=Math.floor(Math.random() * len)
+        }
+        LAST_HABITAT=habitat
+        LAST_INDEX=index
+        return getPokemonApi(pokeList[index].name)
+=======
         await getPokeAPI(pokeList[Math.floor(Math.random() * len)].name,true)
+>>>>>>> 9d90b921bc3bda8c757828c16f0c1e8b9f40a2b8
 }
 
 
