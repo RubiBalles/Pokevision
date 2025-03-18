@@ -10,7 +10,6 @@ async function getPokemonHabitat(habitat){
 
         const len=pokeList.length
 
-<<<<<<< HEAD
         var index=Math.floor(Math.random() * len)
 
         console.log(index)
@@ -22,9 +21,6 @@ async function getPokemonHabitat(habitat){
         LAST_HABITAT=habitat
         LAST_INDEX=index
         return getPokemonApi(pokeList[index].name)
-=======
-        await getPokeAPI(pokeList[Math.floor(Math.random() * len)].name,true)
->>>>>>> 9d90b921bc3bda8c757828c16f0c1e8b9f40a2b8
 }
 
 
