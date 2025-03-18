@@ -1,5 +1,7 @@
+const videoPlayer = document.getElementById('myVideo')
+
 document.getElementById('route').addEventListener('change', async function(event) {
-    const videoPlayer = document.getElementById('myVideo')
+
     //Cogemos todas las sources del viedo
     const videoSrc =Array.from(videoPlayer.getElementsByTagName("source"));
     const base_route=`src/videos/${this.value}10min.`
@@ -11,6 +13,12 @@ document.getElementById('route').addEventListener('change', async function(event
         else if (element.type="video/webm")
             element.src=base_route+"webm"
     });
-    await updateMediaTracks(this.value,1)
+    await updateMediaTracks(this.value,document.getElementById('descriptionLanguage').value)
     videoPlayer.load()
 });
+/*
+    document.getElementById('descriptionLanguage').addEventListener('change', async ()=> {
+    await updateMediaTracks(document.getElementById('route').value,document.getElementById('descriptionLanguage').value)
+    videoPlayer.load()
+});
+*/
