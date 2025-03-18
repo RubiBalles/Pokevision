@@ -8,8 +8,10 @@ async function updateMediaTracks(id, language) {
 for (let i = 0; i < tracks.length; i++) {
     if (tracks[i].kind === "metadata") {
         if(tracks[i].label.includes(id)){
-            tracks[i].mode = "hidden"; // Asegurar que el track de metadatos está activo
-            tracks[i].addEventListener("cuechange",()=> MetadataFunction(i,tracks));
+            if(tracks[i].mode != "hidden"){    
+                tracks[i].mode = "hidden"; // Asegurar que el track de metadatos está activo
+                tracks[i].addEventListener("cuechange",()=> MetadataFunction(i,tracks));
+            }
         }
         else{
             tracks[i].mode="disabled"
@@ -18,10 +20,28 @@ for (let i = 0; i < tracks.length; i++) {
         
     }else if (tracks[i].kind=="descriptions"){
         if(tracks[i].label.includes(id)){
-            tracks[i].mode="showing";
+            if(i==language && id=="tokio" || (i)==language+4 && id=="suiza"){
+                tracks[i].mode="showing";
+                tracks[i].addEventListener("cuechange",()=>DescriptionTrackManagement(tracks,i))
+            }else{
+                tracks[i].mode="disabled";
+                tracks[i].removeEventListener("cuechange",()=>DescriptionTrackManagement(tracks,i))
+            }
+            
+        }
+        else{
+            tracks[i].mode="disabled";
+            tracks[i].removeEventListener("cuechange",()=>DescriptionTrackManagement(tracks,i))
         }
     }
 }
+}
+
+function DescriptionTrackManagement (tracks,i){
+    const activeCue=tracks[i].activeCues[0];
+    if(activeCue){
+        console.log(`Description: ${activeCue.text}`)}
+
 }
 
 function MetadataFunction(i,tracks){

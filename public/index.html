@@ -31,12 +31,12 @@
                         <track id="descriptionTrackTokioCat" kind="descriptions" label="Catalan tokio descriptions" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
 
                         <track id="metadataTrackSuiza" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/suizaMeta.vtt">
-                        <track id="descriptionTrackSuizaEsp" kind="descriptions" label="Spanish tokio descriptions" srclang="es" src="src/tracks/descriptions/suizaDescriptionESP.vtt">
-                        <track id="descriptionTrackSuizaEn" kind="descriptions" label="English tokio descriptions" srclang="en" src="src/tracks/descriptions/suizaDescriptionEN.vtt">
-                        <track id="descriptionTrackSuizaCat" kind="descriptions" label="Catalan tokio descriptions" src="src/tracks/descriptions/suizaDescriptionCAT.vtt">
+                        <track id="descriptionTrackSuizaEsp" kind="descriptions" label="Spanish suiza descriptions" srclang="es" src="src/tracks/descriptions/suizaDescriptionESP.vtt">
+                        <track id="descriptionTrackSuizaEn" kind="descriptions" label="English suiza descriptions" srclang="en" src="src/tracks/descriptions/suizaDescriptionEN.vtt">
+                        <track id="descriptionTrackSuizaCat" kind="descriptions" label="Catalan suiza descriptions" src="src/tracks/descriptions/suizaDescriptionCAT.vtt">
                      Tu navegador no soporta el elemento de video.
                   </video>
-                  <img id="gifOverlay" hidden="true">
+                  <img id="gifOverlay" style="display: none;">
                   <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
                   <img class="pokeball" id="pokeball" src="src/img/PokeBall.png">
                </div>
@@ -45,6 +45,12 @@
                   <select id="route">
                    <option value="tokio">Tokio</option>
                    <option value="suiza">Suiza</option>
+                  </select>
+                  <label for="descriptionLanguage" hidden="true">Elige tu ruta:</label>
+                  <select id="descriptionLanguage" hidden="true">
+                   <option value="1" default>Español</option>
+                   <option value="2">English</option>
+                   <option value="3">Català</option>
                   </select>
                   <button id="continueVideo" hidden="true">Reanudar</button>
                   <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
