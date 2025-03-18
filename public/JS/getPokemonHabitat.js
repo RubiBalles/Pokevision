@@ -20,7 +20,7 @@ async function getPokemonHabitat(habitat){
         }
         LAST_HABITAT=habitat
         LAST_INDEX=index
-        return getPokemonApi(pokeList[index].name)
+        return getPokeAPI(pokeList[index].name)
 }
 
 
