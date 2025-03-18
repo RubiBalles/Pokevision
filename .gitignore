@@ -1,8 +1,7 @@
 *.mp4
 *.png
+img
 node_modules
-# Ignorar los videos
-tokio10min.mp4
-tokio10min.webm
+*.webm
 chapters.vtt
 

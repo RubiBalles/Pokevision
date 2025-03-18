@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--COMMNET-->
 <html lang="es">
    <head>
       <meta charset="UTF-8">
@@ -22,35 +21,43 @@
          <div class="container">
          <section id="sectionVideo">
             <div id="routeSelector">
-               <label for="route">Elige tu ruta:</label>
-               <select id="route">
-                  <option value="tokio">Tokio</option>
-                  <option value="suiza">Suecia</option>
-               </select>
                <div id="videoContainer">
                   <video id="myVideo" autoplay muted>
                      <source src="src/videos/tokio10min.mp4" type="video/mp4">
                      <source src="src/videos/tokio10min.webm" type="video/webm">
+                        <track id="metadataTrackTokio" kind="metadata" label="tokio Video metadata" src="src/tracks/meta/tokioMeta.vtt">
+                        <track id="descriptionTrackTokioEsp" kind="descriptions" label="Spanish tokio descriptions" srclang="es" src="src/tracks/descriptions/tokioDescriptionESP.vtt" default>
+                        <track id="descriptionTrackTokioEn" kind="descriptions" label="English tokio descriptions" srclang="en" src="src/tracks/descriptions/tokioDescriptionEN.vtt">
+                        <track id="descriptionTrackTokioCat" kind="descriptions" label="Catalan tokio descriptions" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
+
+                        <track id="metadataTrackSuiza" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/suizaMeta.vtt">
+                        <track id="descriptionTrackSuizaEsp" kind="descriptions" label="Spanish tokio descriptions" srclang="es" src="src/tracks/descriptions/suizaDescriptionESP.vtt">
+                        <track id="descriptionTrackSuizaEn" kind="descriptions" label="English tokio descriptions" srclang="en" src="src/tracks/descriptions/suizaDescriptionEN.vtt">
+                        <track id="descriptionTrackSuizaCat" kind="descriptions" label="Catalan tokio descriptions" src="src/tracks/descriptions/suizaDescriptionCAT.vtt">
                      Tu navegador no soporta el elemento de video.
-                     <track kind="chapters" label="chapters" src="src/tracks/chapters.vtt" default>
                   </video>
-                  <img id="gifOverlay" src="">
+                  <img id="gifOverlay">
                   <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
-                  <img class="pokeball" id="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Poké_Ball_icon.svg">
+                  <img class="pokeball" id="pokeball" src="src/img/PokeBall.svg">
                </div>
                <div id="botonera">
+                  <label for="route">Elige tu ruta:</label>
+                  <select id="route">
+                   <option value="tokio">Tokio</option>
+                   <option value="suiza">Suecia</option>
+                  </select>
                   <button id="continueVideo" hidden="true">Reanudar</button>
                   <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
-                  <div class="radio-group">
+                  <div class="radio-group" style="display: none;">
                      <div class="radio-option">
-                        <input type="radio" id="boy" name="trainer" value="Boy" checked/>
-                        <label for="boy">Hombre</label>
+                         <input type="radio" id="boy" name="trainer" value="Boy" checked />
+                         <label for="boy">Hombre</label>
                      </div>
                      <div class="radio-option">
-                        <input type="radio" id="girl" name="trainer" value="Girl" />
-                        <label for="girl">Mujer</label>
+                         <input type="radio" id="girl" name="trainer" value="Girl" />
+                         <label for="girl">Mujer</label>
                      </div>
-                  </div>
+                 </div>                 
                </div>
                <div id="pokeBallContainer">
                   <!-- Las imágenes de Pokébola se agregarán aquí -->
@@ -82,12 +89,12 @@
       <script src="JS/addPokeballEvent.js"></script>
       <script src="JS/changeTrainerSprite.js"></script>
       <script src="JS/continueVideo.js"></script>
+      <script src="JS/getPokemonHabitat.js"></script>
       <script src="JS/getPokeAPI.js"></script>
       <script src="JS/lanzarPokeBall.js"></script>
-      <script src="JS/setImgPossition.js"></script>
-      <script src="JS/showImage.js"></script>
       <script src="JS/videoChapters.js"></script>
       <script src="JS/VideoSelector.js"></script>
       <script src="JS/Menu.js"></script>
+      <script src="JS/updateMediaTracks.js"></script>
    </body>
 </html>

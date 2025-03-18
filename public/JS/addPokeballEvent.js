@@ -9,7 +9,7 @@ function increasePokemonTeam(){// Creamos un nuevo contenedor
     
     // Imagen de la Pokébola
     const pokeBallImage = document.createElement('img');
-    pokeBallImage.src = 'src/img/PokeBall.png';
+    pokeBallImage.src = 'src/img/PokeBall.svg';
     pokeBallImage.alt = 'Pokébola';
     pokeBallImage.style.width = "80%";
     pokeBallImage.style.height = "80%";

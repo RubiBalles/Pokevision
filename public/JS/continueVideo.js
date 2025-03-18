@@ -1,6 +1,7 @@
 const BUTTON=document.getElementById("continueVideo");
-const VIDEO=document.getElementById("myVideo");
-BUTTON.addEventListener("click",()=>{
+BUTTON.addEventListener("click",resetPlayer)
+
+function resetPlayer(){
     if(!BUTTON.hidden){
         gifOverlay.style.display = "none"; // Ocultar GIF
         gifOverlay.classList.remove("intoPokeball")
@@ -8,7 +9,9 @@ BUTTON.addEventListener("click",()=>{
         video.style.filter = "none"; // Quitar desenfoque
         pokeTrainer.style.display="none"
         pokeball.style.display="none"
-        VIDEO.play()
+        radioGroup.style.display="none"
+        video.play()
         BUTTON.hidden=true
     }
-})
+
+}
