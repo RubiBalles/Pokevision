@@ -1,5 +1,6 @@
 *.mp4
 *.png
+audio
 img
 node_modules
 *.webm

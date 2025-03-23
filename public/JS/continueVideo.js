@@ -11,6 +11,7 @@ function resetPlayer(){
         pokeball.style.display="none"
         radioGroup.style.display="none"
         video.play()
+        document.getElementById("pokeAudio").pause();
         BUTTON.hidden=true
     }
 

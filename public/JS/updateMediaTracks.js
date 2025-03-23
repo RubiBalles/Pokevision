@@ -1,51 +1,25 @@
- 
 
-async function updateMediaTracks(id, language) {
-    // Obtener el video y sus tracks
 
-    const tracks = video.textTracks;
-// Iterar sobre los tracks
-for (let i = 0; i < tracks.length; i++) {
-    if (tracks[i].kind === "metadata") {
-        if(tracks[i].label.includes(id)){
-            if(tracks[i].mode != "hidden"){    
-                tracks[i].mode = "hidden"; // Asegurar que el track de metadatos está activo
-                tracks[i].addEventListener("cuechange",()=> MetadataFunction(i,tracks));
-            }
-        }
-        else{
-            tracks[i].mode="disabled"
-            tracks[i].removeEventListener("cuechange",()=>MetadataFunction(i,tracks));
-        }
-        
-    }else if (tracks[i].kind=="descriptions"){
-        if(tracks[i].label.includes(id)){
-            if(i==language && id=="tokio" || (i)==language+4 && id=="suiza"){
-                tracks[i].mode="showing";
-                tracks[i].addEventListener("cuechange",()=>DescriptionTrackManagement(tracks,i))
-            }else{
-                tracks[i].mode="disabled";
-                tracks[i].removeEventListener("cuechange",()=>DescriptionTrackManagement(tracks,i))
-            }
-            
-        }
-        else{
-            tracks[i].mode="disabled";
-            tracks[i].removeEventListener("cuechange",()=>DescriptionTrackManagement(tracks,i))
-        }
-    }
-}
+async function updateMediaTracksDyn(id) {  
+    const MP4_VIDEO_SCR=id+"10min.mp4"
+    const WEBM_VIDEO_SCR=id+"10min.webm"
+    const META_TRACK=id+"Meta.vtt"
+    const SUBT_TRACKS=[id+"DescriptionCAT.vtt",id+"DescriptionEN.vtt",id+"DescriptionESP.vtt"]
+
+    document.getElementById("META").src="src/tracks/meta/"+META_TRACK
+    document.getElementById("ESP").src="src/tracks/descriptions/"+SUBT_TRACKS[2]
+    document.getElementById("EN").src="src/tracks/descriptions/"+SUBT_TRACKS[1]
+    document.getElementById("CAT").src="src/tracks/descriptions/"+SUBT_TRACKS[0]
+
+    document.getElementById("MP4").src="src/videos/"+MP4_VIDEO_SCR
+    document.getElementById("WEBM").src="src/videos/"+WEBM_VIDEO_SCR
+
+    video.load()
 }
 
-function DescriptionTrackManagement (tracks,i){
-    const activeCue=tracks[i].activeCues[0];
-    if(activeCue){
-        console.log(`Description: ${activeCue.text}`)}
 
-}
-
-function MetadataFunction(i,tracks){
-    const activeCue = tracks[i].activeCues[0]; // Obtener el cue activo
+function MetadataFunction(activeCue){
+ // Obtener el cue activo
             
     if (activeCue) {
         console.log(`Capítulo en curso: ${activeCue.text}`);
@@ -68,3 +42,4 @@ function MetadataFunction(i,tracks){
         radioGroup.style.display = "flex";
     }
 }
+

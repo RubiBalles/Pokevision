@@ -51,9 +51,11 @@ async function getPokeAPI(nameOrId,chapterPokemon=false){
             
         `;
         getPokemonType(data.types)
+
     } catch (error) {
         infoDiv.innerHTML = `<p>Error: Pokémon no encontrado.</p>`;
     }
+    addPokeSound("PokemonAppear");
 }
 
 async function getPokemonType(typesArray){
@@ -81,3 +83,5 @@ async function getPokemonType(typesArray){
         i++;
     });
 }
+
+

@@ -22,36 +22,45 @@
          <section id="sectionVideo">
             <div id="routeSelector">
                <div id="videoContainer">
-                  <video id="myVideo" autoplay muted>
-                     <source src="src/videos/tokio10min.mp4" type="video/mp4">
-                     <source src="src/videos/tokio10min.webm" type="video/webm">
-                        <track id="metadataTrackTokio" kind="metadata" label="tokio Video metadata" src="src/tracks/meta/tokioMeta.vtt">
-                        <track id="descriptionTrackTokioEsp" kind="descriptions" label="Spanish tokio descriptions" srclang="es" src="src/tracks/descriptions/tokioDescriptionESP.vtt" default>
-                        <track id="descriptionTrackTokioEn" kind="descriptions" label="English tokio descriptions" srclang="en" src="src/tracks/descriptions/tokioDescriptionEN.vtt">
-                        <track id="descriptionTrackTokioCat" kind="descriptions" label="Catalan tokio descriptions" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
-
-                        <track id="metadataTrackSuiza" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/suizaMeta.vtt">
-                        <track id="descriptionTrackSuizaEsp" kind="descriptions" label="Spanish suiza descriptions" srclang="es" src="src/tracks/descriptions/suizaDescriptionESP.vtt">
-                        <track id="descriptionTrackSuizaEn" kind="descriptions" label="English suiza descriptions" srclang="en" src="src/tracks/descriptions/suizaDescriptionEN.vtt">
-                        <track id="descriptionTrackSuizaCat" kind="descriptions" label="Catalan suiza descriptions" src="src/tracks/descriptions/suizaDescriptionCAT.vtt">
+                  <video id="myVideo" controls muted>
+                     <source id="MP4" src="src/videos/tokio10min.mp4" type="video/mp4">
+                     <source id="WEBM" src="src/videos/tokio10min.webm" type="video/webm">
+                        <track id="META" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/tokioMeta.vtt">
+                        <track id="ESP" kind="subtitles" label="Español" srclang="es" src="src/tracks/descriptions/tokioDescriptionESP.vtt">
+                        <track id="EN" kind="subtitles" label="English" srclang="en" src="src/tracks/descriptions/tokioDescriptionEN.vtt">
+                        <track id="CAT" kind="subtitles" label="Català" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
                      Tu navegador no soporta el elemento de video.
                   </video>
+                  <audio id="myAudio" hidden="true">
+                     <source id="M4A" src="src/audio/Gen1.m4a" type="audio/m4a">
+                     <source id="MP3" src="src/audio/Gen1.mp3" type="audio/mp3">
+                  </audio>
+
+                  <audio id="pokeAudio" hidden="true">
+                     <source id="pokeAudioM4A" src="src/audio/PokemonAppear.m4a" type="audio/m4a">
+                     <source id="pokeAudioMP3" src="src/audio/pokemonAppear.mp3" type="audio/mp3">
+                  </audio>
+
                   <img id="gifOverlay" style="display: none;">
                   <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
                   <img class="pokeball" id="pokeball" src="src/img/PokeBall.png">
                </div>
                <div id="botonera">
-                  <label for="route">Elige tu ruta:</label>
-                  <select id="route">
-                   <option value="tokio">Tokio</option>
-                   <option value="suiza">Suiza</option>
-                  </select>
-                  <label for="descriptionLanguage" hidden="true">Elige tu ruta:</label>
-                  <select id="descriptionLanguage" hidden="true">
-                   <option value="1" default>Español</option>
-                   <option value="2">English</option>
-                   <option value="3">Català</option>
-                  </select>
+                  <div>
+                     <label for="route">Elige tu ruta:</label>
+                     <select id="route">
+                      <option value="tokio">Tokio</option>
+                      <option value="suiza">Suiza</option>
+                     </select>
+                  </div>
+                  <div>
+                     <label for="musicSelector">Musica de Fondo:</label>
+                     <select id="musicSelector">
+                      <option value="1" default>Gen 1</option>
+                      <option value="2">Gen 2</option>
+                     </select>
+                  </div>
+
                   <button id="continueVideo" hidden="true">Reanudar</button>
                   <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
                   <div class="radio-group" style="display: none;">
@@ -102,6 +111,9 @@
       <script src="JS/videoChapters.js"></script>
       <script src="JS/VideoSelector.js"></script>
       <script src="JS/Menu.js"></script>
+      <script src="JS/syncAudioVideo.js"></script>
+      <script src="JS/videoDetectChange.js"></script>
+      <script src="JS/addPokeSound.js"></script>
 
    </body>
 </html>
