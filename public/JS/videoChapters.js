@@ -12,7 +12,9 @@ var INIT=0;
 // Esperar a que el video cargue y los tracks estén disponibles
 video.addEventListener("loadedmetadata", async ()=>{
     if(INIT==0){
+      
         await updateMediaTracksDyn(document.getElementById("route").value)
+
         INIT=1;
     }
         });
