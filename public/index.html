@@ -20,18 +20,18 @@
       <main>
          <div class="container">
          <section id="sectionVideo">
-            <div id="routeSelector">
+
                <div id="videoContainer">
 
                   <video id="myVideo" controls muted>
-                     <source id="MP4" src="src/videos/tokio10min.mp4" type="video/mp4">
-                     <source id="WEBM" src="src/videos/tokio10min.webm" type="video/webm">
+                     <source id="MP4" src="src/videos/1080p/tokio.mp4" type="video/mp4">
+                     <source id="WEBM" src="src/videos/1080p/tokio.mp4" type="video/webm">
                         <track id="META" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/tokioMeta.vtt">
                         <track id="ESP" kind="subtitles" label="Español" srclang="es" src="src/tracks/descriptions/tokioDescriptionESP.vtt">
                         <track id="EN" kind="subtitles" label="English" srclang="en" src="src/tracks/descriptions/tokioDescriptionEN.vtt">
                         <track id="CAT" kind="subtitles" label="Català" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
-
                      Tu navegador no soporta el elemento de video.
+
                   </video>
                   <audio id="myAudio" hidden="true">
                      <source id="M4A" src="src/audio/Gen1.m4a" type="audio/m4a">
@@ -46,9 +46,21 @@
                   <img id="gifOverlay" style="display: none;">
                   <img id="pokeTrainer" src="src/img/PokeTrainer_Boy.png">
                   <img class="pokeball" id="pokeball" src="src/img/PokeBall.png">
-               </div>
-               <div id="botonera">
 
+
+
+                     <select id="qualitySelector" class="qualitySelector">
+                        <option value="4K">4K</option>
+                        <option value="2K">2K</option>
+                        <option value="1080p">Full HD (1080p)</option>
+                        <option value="720p">HD (720p)</option>
+                        <option value="480p">SD (480p)</option>
+                     </select>
+
+               </div>
+               <div id="routeSelector">
+               <div id="botonera">
+                  
                   <div>
                      <label for="route">Elige tu ruta:</label>
                      <select id="route">
