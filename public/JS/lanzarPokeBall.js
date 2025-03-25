@@ -38,6 +38,7 @@ document.getElementById('capturePokemonButton').addEventListener('click', functi
             }
             else if(event.animationName=="shake"){
                 increasePokemonTeam();
+                addPokeSound("captured")
                 pokeball.removeEventListener("animationend", onLaunchEnd);
             }
         });
