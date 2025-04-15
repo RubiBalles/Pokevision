@@ -1,0 +1,114 @@
+/* mobile.css */
+
+/* Reset general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+}
+
+/* Fondo blanco cuando la botonera está activa */
+body.botonera-active {
+    background: white !important;
+    background-image: none !important;
+}
+
+/* Fondo original solo cuando no hay botonera activa */
+body:not(.botonera-active) {
+    background-image: url('../src/img/Fondo.webp');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Estilo general para todos los botones y selects */
+button,
+select {
+    background-color: #d32f2f; /* Rojo intenso */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+select:hover {
+    background-color: #b71c1c; /* Rojo más oscuro */
+}
+
+/* Estilo para la Pokébola */
+.pokeball {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px !important; /* Tamaño fijo */
+    height: auto; /* Para mantener proporción */
+    z-index: 10;
+    transition: transform 0.5s ease-out;
+    display: none;
+}
+
+/* Estilo para la animación de la Pokébola */
+@keyframes spin {
+    from { transform: translateX(-50%) rotate(0deg); }
+    to { transform: translateX(-50%) rotate(360deg); }
+}
+
+.pokeball.spin {
+    animation: spin 0.5s linear infinite;
+}
+
+.pokeball.visible {
+    display: block !important;
+}
+
+.pokeball.oculto {
+    display: none !important;
+}
+
+/* Responsive para móviles pequeños */
+@media (max-width: 767px) {
+    body:not(.botonera-active) {
+        background-position: 65% center;
+    }
+    
+}
+
+/* Tablet y Desktop */
+@media (min-width: 768px) {
+    body:not(.botonera-active) {
+        background-size: cover;
+        background-position: center top;
+    }
+    
+}
+
+/* Estilo de la botonera */
+#botonera {
+    display: none; /* Oculto por defecto, se muestra con JS */
+}
+
+body.botonera-active #botonera {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+}
