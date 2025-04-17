@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Remoto</title>
+    <link rel="stylesheet" href="CSS/mobile.css">
+</head>
+<body class="botonera-active">
+    <div id="botonera">
+        <button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>
+        <div>
+           <label for="route">Elige tu ruta:</label>
+           <select id="route">
+            <option value="tokio">Tokio</option>
+            <option value="suiza">Suiza</option>
+           </select>
+        </div>
+        <div>
+           <label for="musicSelector">Musica de Fondo:</label>
+           <select id="musicSelector">
+            <option value="1" default>Gen 1</option>
+            <option value="2">Gen 2</option>
+           </select>
+        </div>
+        <button id="continueVideo" hidden="true">Reanudar</button>
+       </div>                 
+    </div>
+
+    <img src="src/img/PokeBall.png" alt="Pokéball" class="pokeball">
+
+    <!-- Scripts -->
+    <script src="JS/continueVideo.js"></script>
+    <script src="JS/syncAudioVideo.js"></script>
+    <script src="JS/videoDetectChange.js"></script>
+    <script src="JS/addPokeSound.js"></script>
+    <script src="JS/VideoSelector.js"></script>
+    <!---nuevos-->
+    <script src="JS/controlremoto.js"></script>
+    <script src="JS/SpinPokeball.js"></script>
+    <script src="JS/DragPokeball.js"></script>
+</body>
+</html>

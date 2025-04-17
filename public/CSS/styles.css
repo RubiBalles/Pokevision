@@ -188,7 +188,7 @@ footer {
     display: block;
     justify-content: end;
     width: 3em;
-    left: 56vw;
+    left: 65em;
     top: 3vh;
     background: rgba(0, 0, 0, 0.7);
     color: white;
@@ -225,8 +225,8 @@ footer {
     width: 10%;
     height: 20%;
     display: block;
-    top: 40%;
-    left: 70%;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -423,7 +423,7 @@ footer {
         height: 50vh;
     }
     #qualitySelector{
-        left: 65vw;
+        left: 45em;
     }
 
 
@@ -469,7 +469,7 @@ footer {
         gap: 15px;
     }
     #qualitySelector{
-        left: 65vw;
+        left: 22em;
     }
 
     #routeSelector {
@@ -535,7 +535,7 @@ footer {
     }
 
     #qualitySelector{
-        left: 60vw;
+        left: 15em;
     }
 
     .container {
@@ -553,7 +553,7 @@ footer {
 
 
 
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (max-width: 1024px) and (min-width: 768px) {
     #sectionDescription {
         max-width: 45%; /* Ajuste fino para tablets */
         padding: 15px;
@@ -566,6 +566,9 @@ footer {
     #pokeBallContainer {
         grid-template-columns: repeat(4, 1fr);
     }
+    #qualitySelector{
+        left: 40em;
+    }
 }
 @media (max-height: 800px) and (min-width: 768px) {
     #videoContainer {
@@ -575,6 +578,7 @@ footer {
     #sectionDescription {
         max-height: 50vh;
     }
+
 }
 
 /* Estilos para el menú hamburguesa */
@@ -652,5 +656,9 @@ footer {
 
     #pokeBallContainer {
         grid-template-columns: repeat(4, 1fr); /* Ajustar el número de columnas */
+    }
+    
+    #qualitySelector{
+        left: 45em;
     }
 }
