@@ -337,29 +337,28 @@ footer {
     background-color: #F44949;
     color: white;
 }
-
 @keyframes launch {
     from {
         top: 60%;
-        left: 15%;
+        left: 50%;
     }
     50% {
         transform: rotate(720deg);
     }
     to {
-        top: 40%;
-        left: 70%;
+        top: 50%;
+        left: 50%;
     }
 }
 
 @keyframes shake {
     from {
-        top: 40%;
-        left: 70%;
+        top: 50%; /* Empieza en el centro */
+        left: 50%;
     }
     to {
-        top: 40%;
-        left: 70%;
+        top: 50%; /* Termina en el centro */
+        left: 50%;
     }
     0%, 100% {
         transform: rotate(0deg);
@@ -381,6 +380,7 @@ footer {
         display: none;
     }
 }
+
 
 /* Responsive Styles */
 @media (min-width: 1600px) {
