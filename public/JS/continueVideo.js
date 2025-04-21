@@ -1,7 +1,6 @@
-const BUTTON=document.getElementById("continueVideo");
-BUTTON.addEventListener("click",resetPlayer)
-
 function resetPlayer(){
+    const BUTTON=document.getElementById("continueVideo");
+    
     if(!BUTTON.hidden){
         gifOverlay.style.display = "none"; // Ocultar GIF
         gifOverlay.classList.remove("intoPokeball")

@@ -1,8 +1,6 @@
 
 
 async function updateMediaTracksDyn(id) {  
-    const MP4_VIDEO_SCR=id+"10min.mp4"
-    const WEBM_VIDEO_SCR=id+"10min.webm"
     const META_TRACK=id+"Meta.vtt"
     const SUBT_TRACKS=[id+"DescriptionCAT.vtt",id+"DescriptionEN.vtt",id+"DescriptionESP.vtt"]
 
@@ -10,9 +8,6 @@ async function updateMediaTracksDyn(id) {
     document.getElementById("ESP").src="src/tracks/descriptions/"+SUBT_TRACKS[2]
     document.getElementById("EN").src="src/tracks/descriptions/"+SUBT_TRACKS[1]
     document.getElementById("CAT").src="src/tracks/descriptions/"+SUBT_TRACKS[0]
-
-    document.getElementById("MP4").src="src/videos/"+MP4_VIDEO_SCR
-    document.getElementById("WEBM").src="src/videos/"+WEBM_VIDEO_SCR
 
     video.load()
 }
@@ -38,8 +33,8 @@ function MetadataFunction(activeCue){
         gifOverlay.style.display="block"
 
         // Mostrar UI adicional
-        pokeTrainer.style.display = "block";
-        radioGroup.style.display = "flex";
+        //pokeTrainer.style.display = "block";
+        //radioGroup.style.display = "flex";
     }
 }
 

@@ -1,6 +1,6 @@
 // Archivo: SpinPokeball.js
 // Descripción: Este script permite que una Pokéball gire al ser presionada y se detenga al soltarla.
-document.addEventListener("DOMContentLoaded", function() {
+function spinPokeBall(){
     const pokeball = document.querySelector(".pokeball");
 
     let spinning = false;
@@ -25,4 +25,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // Eventos para pantallas táctiles
     pokeball.addEventListener("touchstart", startSpin);
     document.addEventListener("touchend", stopSpin);
-});
+}

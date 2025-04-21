@@ -1,9 +1,12 @@
+
 import express from "express";
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createVTTFile } from './generateTrack.js'; // Importar la función para generar el archivo
+
 import http from 'http';
 import { Server } from 'socket.io';
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const port = 80;
@@ -15,16 +18,106 @@ const io = new Server(server);
 createVTTFile(__dirname);
 
 app.use(express.static('public'));
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(`Example app listening on port
     ${port}`);
     });
 
-    io.on('connection', (socket) => {
-        console.log("S'ha connectat algú");
-        });
+const screens = {};         // pin => screenSocket
+const controllers = {};     // screenSocket.id => controllerSocket
+const activePins = {};      // screenSocket.id => pin
 
-    server.listen(port, () => {
-        console.log(`Example app listening on port
-        ${port}`);
-        });
+function generatePin() {
+    return Math.floor(100000 + Math.random() * 900000).toString(); // 6 dígitos
+  }
+
+io.on('connection', (socket) => {
+    console.log("S'ha connectat algú");
+
+    socket.on('register_screen', () => {
+        const pin = generatePin();
+        screens[pin] = socket;
+        activePins[socket.id] = pin;
+        socket.role = 'screen';
+        socket.pin = pin;
+    
+        console.log(`🖥️ Pantalla registrada con PIN: ${pin}`);
+        socket.emit('pin_assigned', pin);
+      });
+    
+      socket.on('register_controller', (pin) => {
+        const screenSocket = screens[pin];
+        if (!screenSocket) {
+          socket.emit('error_message', '❌ PIN inválido o expirado.');
+          return;
+        }
+    
+        // Verifica que no haya ya un controlador
+        if (controllers[screenSocket.id]) {
+          socket.emit('error_message', '❌ Esta pantalla ya tiene un controlador.');
+          return;
+        }
+    
+        socket.role = 'controller';
+        socket.screenSocket = screenSocket;
+    
+        controllers[screenSocket.id] = socket;
+    
+        console.log(`🎮 Controlador conectado al PIN: ${pin}`);
+        socket.emit('controller_connected');
+      });
+    
+      socket.on('play', () => {
+        //console.log("Se ha pulsado el boton de play")
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('play');
+        }
+      });
+    
+      socket.on('pause', () => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('pause');
+        }
+      });
+
+      socket.on('selectVideo', (changeVideo,videoName,fullName) => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('selectVideo', changeVideo,videoName,fullName);
+        }
+      });
+
+      socket.on('selectQuality', (value) => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('selectVideo', value);
+        }
+      });
+    
+      socket.on('hide_controls', () => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('hide_controls');
+        }
+      });
+      socket.on('disconnect', () => {
+        if (socket.role === 'screen') {
+          const pin = activePins[socket.id];
+          if (pin) delete screens[pin];
+          delete activePins[socket.id];
+    
+          const controllerSocket = controllers[socket.id];
+          if (controllerSocket) {
+            controllerSocket.emit('error_message', '❌ La pantalla se ha desconectado.');
+            delete controllers[socket.id];
+          }
+    
+          console.log(`❌ Pantalla desconectada, PIN liberado: ${pin}`);
+        }
+    
+        if (socket.role === 'controller') {
+          const screenSocket = socket.screenSocket;
+          if (screenSocket) {
+            delete controllers[screenSocket.id];
+            console.log('❌ Controlador desconectado');
+          }
+        }
+      });
+    });

@@ -8,6 +8,16 @@
 </head>
 <body class="botonera-active">
     <div id="botonera">
+        <h1>Controlador</h1>
+        <label>Introduce el PIN de la pantalla: <input id="pin" maxlength="6" /></label>
+        <button onclick="connect()">Conectar</button>
+        <p id="status"></p>
+
+        <div id="controls" style="display:none;">
+        <button onclick="socket.emit('play')">▶️ Reproducir</button>
+        <button onclick="socket.emit('pause')">⏸️ Pausar</button>
+        </div>
+
         <button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>
         <div>
            <label for="route">Elige tu ruta:</label>
@@ -16,6 +26,16 @@
             <option value="suiza">Suiza</option>
            </select>
         </div>
+
+        <select id="qualitySelector" class="qualitySelector">
+            <option value="4K">4K</option>
+            <option value="2K">2K</option>
+            <option value="1080p">Full HD (1080p)</option>
+            <option value="720p">HD (720p)</option>
+            <option value="480p">SD (480p)</option>
+        </select>
+
+
         <div>
            <label for="musicSelector">Musica de Fondo:</label>
            <select id="musicSelector">
@@ -30,14 +50,32 @@
     <img src="src/img/PokeBall.png" alt="Pokéball" class="pokeball">
 
     <!-- Scripts -->
-    <script src="JS/continueVideo.js"></script>
-    <script src="JS/syncAudioVideo.js"></script>
-    <script src="JS/videoDetectChange.js"></script>
-    <script src="JS/addPokeSound.js"></script>
-    <script src="JS/VideoSelector.js"></script>
     <!---nuevos-->
     <script src="JS/controlremoto.js"></script>
     <script src="JS/SpinPokeball.js"></script>
     <script src="JS/DragPokeball.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      const status = document.getElementById('status');
+      const controls = document.getElementById('controls');
+  
+      function connect() {
+        const pin = document.getElementById('pin').value;
+        socket.emit('register_controller', pin);
+      }
+  
+      socket.on('error_message', (msg) => {
+        status.innerText = msg;
+        controls.style.display = 'none';
+      });
+  
+      socket.on('controller_connected', () => {
+        status.innerText = '✅ Conectado correctamente a la pantalla.';
+        controls.style.display = 'block';
+        socket.emit('hide_controls')
+      });
+    </script>
+    <script src="JS/CONTROL/selectSocketMsg.js"></script>
 </body>
 </html>
