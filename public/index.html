@@ -30,7 +30,7 @@
                         <track id="META" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/tokioMeta.vtt">
                         <track id="ESP" kind="subtitles" label="Español" srclang="es" src="src/tracks/descriptions/tokioDescriptionESP.vtt">
                         <track id="EN" kind="subtitles" label="English" srclang="en" src="src/tracks/descriptions/tokioDescriptionEN.vtt">
-                        <track id="CAT" kind="subtitles" label="Català" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
+                        <track id="CAT" kind="subtitles" label="Català" srclang="cat" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
                      Tu navegador no soporta el elemento de video.
 
                   </video>
@@ -130,7 +130,7 @@
       <script src="JS/continueVideo.js"></script>
       <script src="JS/getPokemonHabitat.js"></script>
       <script src="JS/getPokeAPI.js"></script>
-      <script src="JS/lanzarPokeBall.js"></script>
+      <!--<script src="JS/lanzarPokeBall.js"></script>-->
       <script src="JS/videoChapters.js"></script>
       <script src="JS/VideoSelector.js"></script>
       <script src="JS/Menu.js"></script>
@@ -138,6 +138,7 @@
       <script src="JS/videoDetectChange.js"></script>
       <script src="JS/addPokeSound.js"></script>
       <script src="JS/hideControlers.js"></script>
+      <script src="JS/CONTROL/changeSubtitles.js"></script>
       <script src="/socket.io/socket.io.js"></script>
       <script>
         const socket = io();
@@ -159,6 +160,7 @@
             console.error('Error al cambiar video:', err);
          }
          })
+         socket.on('subtitles',(value)=>changeSubtitles(value))
       </script>
       <script src="JS/init.js"></script>
    </body>

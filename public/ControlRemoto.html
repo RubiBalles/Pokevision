@@ -18,7 +18,9 @@
         <button onclick="socket.emit('pause')">⏸️ Pausar</button>
         </div>
 
-        <button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>
+        <!--<button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>
+        -->
+
         <div>
            <label for="route">Elige tu ruta:</label>
            <select id="route">
@@ -26,14 +28,18 @@
             <option value="suiza">Suiza</option>
            </select>
         </div>
-
-        <select id="qualitySelector" class="qualitySelector">
+        <div>
+          <label for="qualitySelector">Calidad: </label>
+          <select id="qualitySelector" class="qualitySelector">
             <option value="4K">4K</option>
             <option value="2K">2K</option>
             <option value="1080p">Full HD (1080p)</option>
             <option value="720p">HD (720p)</option>
             <option value="480p">SD (480p)</option>
-        </select>
+          </select>
+        </div>
+
+       
 
 
         <div>
@@ -42,6 +48,15 @@
             <option value="1" default>Gen 1</option>
             <option value="2">Gen 2</option>
            </select>
+        </div>
+        <div>
+          <label for="subtitleSelector">subtitulos:</label>
+          <select id="subtitleSelector">
+            <option value="">Sin subtítulos</option>
+            <option value="en">Inglés</option>
+            <option value="es">Español</option>
+            <option value="cat">Catalán</option>
+          </select>
         </div>
         <button id="continueVideo" hidden="true">Reanudar</button>
        </div>                 
@@ -75,6 +90,14 @@
         controls.style.display = 'block';
         socket.emit('hide_controls')
       });
+      socket.on('controller_connected', () => {
+        status.innerText = '✅ Conectado correctamente a la pantalla.';
+        controls.style.display = 'block';
+        socket.emit('hide_controls')
+      });
+      socket.on('pokemon_appear',()=>{
+        console.log("A wild Pokemon appear!!")
+      })
     </script>
     <script src="JS/CONTROL/selectSocketMsg.js"></script>
 </body>

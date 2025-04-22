@@ -1,7 +1,7 @@
 function resetPlayer(){
     const BUTTON=document.getElementById("continueVideo");
     
-    if(!BUTTON.hidden){
+    if(BUTTON && !BUTTON.hidden){
         gifOverlay.style.display = "none"; // Ocultar GIF
         gifOverlay.classList.remove("intoPokeball")
         pokeball.classList.remove("shake")

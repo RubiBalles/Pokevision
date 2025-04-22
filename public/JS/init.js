@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById('qualitySelector').addEventListener('change',() =>changeVideo())
 
-    document.getElementById("continueVideo").addEventListener("click",()=>resetPlayer())
+    //document.getElementById("continueVideo").addEventListener("click",()=>resetPlayer())
 
     //document.addEventListener("DOMContentLoaded", ()=>spinPokeBall());
 

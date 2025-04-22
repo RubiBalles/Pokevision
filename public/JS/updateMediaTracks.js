@@ -25,12 +25,16 @@ function MetadataFunction(activeCue){
         // Aplicar efectos al video
         video.pause();
         video.style.filter = "blur(10px)";
-        document.getElementById("continueVideo").hidden = false;
-        document.getElementById("capturePokemonButton").hidden = false;
+        const continueButton=document.getElementById("continueVideo")
+        const captureButton=document.getElementById("capturePokemonButton")
+        if (continueButton) continueButton.hidden = false;
+        if (captureButton) captureButton.hidden = false;
         
         // Llamar a la API con el número del capítulo
         getPokemonHabitat(activeCue.text.substring(4))
         gifOverlay.style.display="block"
+
+        socket.emit('pokemon_appear')
 
         // Mostrar UI adicional
         //pokeTrainer.style.display = "block";

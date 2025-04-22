@@ -62,6 +62,9 @@ io.on('connection', (socket) => {
         socket.screenSocket = screenSocket;
     
         controllers[screenSocket.id] = socket;
+
+        screenSocket.controllerSocket = socket;
+
     
         console.log(`🎮 Controlador conectado al PIN: ${pin}`);
         socket.emit('controller_connected');
@@ -91,12 +94,24 @@ io.on('connection', (socket) => {
           socket.screenSocket.emit('selectVideo', value);
         }
       });
+
+      socket.on('subtitles', (value) => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('subtitles', value);
+        }
+      });
     
       socket.on('hide_controls', () => {
         if (socket.role === 'controller' && socket.screenSocket) {
           socket.screenSocket.emit('hide_controls');
         }
       });
+      socket.on('pokemon_appear',()=>{
+        if (socket.role === 'screen' && socket.controllerSocket) {
+          socket.controllerSocket.emit('pokemon_appear');
+        }
+      });
+
       socket.on('disconnect', () => {
         if (socket.role === 'screen') {
           const pin = activePins[socket.id];
