@@ -140,28 +140,7 @@
       <script src="JS/hideControlers.js"></script>
       <script src="JS/CONTROL/changeSubtitles.js"></script>
       <script src="/socket.io/socket.io.js"></script>
-      <script>
-        const socket = io();
-        //const videoTest = document.getElementById('Video');
-    
-        socket.emit('register_screen');
-    
-        socket.on('pin_assigned', (pin) => {
-           //console.log(pin)
-           document.getElementById('pinLabel').innerText+=pin;
-        });
-        socket.on('play', () => video.play());
-        socket.on('pause', () => video.pause());
-        socket.on('hide_controls',()=>hideScreenControlers())
-        socket.on('selectVideo',async (change,videoName,fullName) =>{
-         try {
-            await changeVideo(change,videoName,fullName);
-         } catch (err) {
-            console.error('Error al cambiar video:', err);
-         }
-         })
-         socket.on('subtitles',(value)=>changeSubtitles(value))
-      </script>
+      <script src="JS/screenSocket.js"></script>
       <script src="JS/init.js"></script>
    </body>
 </html>

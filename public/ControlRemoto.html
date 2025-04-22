@@ -1,33 +1,36 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Remoto</title>
-    <link rel="stylesheet" href="CSS/mobile.css">
-</head>
-<body class="botonera-active">
-    <div id="botonera">
-        <h1>Controlador</h1>
-        <label>Introduce el PIN de la pantalla: <input id="pin" maxlength="6" /></label>
-        <button onclick="connect()">Conectar</button>
-        <p id="status"></p>
-
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Control Remoto</title>
+      <link rel="stylesheet" href="CSS/mobile.css">
+  </head>
+  <body class="botonera-active">
+    <main>
+      <div id="botonera">
+        <div>
+          <h1>Controlador</h1>
+          <label>Introduce el PIN de la pantalla: <input id="pin" maxlength="6" /></label>
+          <button onclick="connect()">Conectar</button>
+          <p id="status"></p>
+        </div>
+        
         <div id="controls" style="display:none;">
-        <button onclick="socket.emit('play')">▶️ Reproducir</button>
-        <button onclick="socket.emit('pause')">⏸️ Pausar</button>
+          <button onclick="socket.emit('play')">▶️ Reproducir</button>
+          <button onclick="socket.emit('pause')">⏸️ Pausar</button>
         </div>
 
-        <!--<button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>
-        -->
-
+        <!--<button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>-->
+        
         <div>
-           <label for="route">Elige tu ruta:</label>
-           <select id="route">
+          <label for="route">Elige tu ruta:</label>
+          <select id="route">
             <option value="tokio">Tokio</option>
             <option value="suiza">Suiza</option>
-           </select>
+          </select>
         </div>
+        
         <div>
           <label for="qualitySelector">Calidad: </label>
           <select id="qualitySelector" class="qualitySelector">
@@ -39,18 +42,16 @@
           </select>
         </div>
 
-       
-
-
         <div>
-           <label for="musicSelector">Musica de Fondo:</label>
-           <select id="musicSelector">
+          <label for="musicSelector">Musica de Fondo:</label>
+          <select id="musicSelector">
             <option value="1" default>Gen 1</option>
             <option value="2">Gen 2</option>
-           </select>
+          </select>
         </div>
+        
         <div>
-          <label for="subtitleSelector">subtitulos:</label>
+          <label for="subtitleSelector">Subtitulos:</label>
           <select id="subtitleSelector">
             <option value="">Sin subtítulos</option>
             <option value="en">Inglés</option>
@@ -59,9 +60,10 @@
           </select>
         </div>
         <button id="continueVideo" hidden="true">Reanudar</button>
-       </div>                 
-    </div>
-
+      </div>                 
+      </div>
+    </main>
+    
     <img src="src/img/PokeBall.png" alt="Pokéball" class="pokeball">
 
     <!-- Scripts -->
@@ -70,35 +72,7 @@
     <script src="JS/SpinPokeball.js"></script>
     <script src="JS/DragPokeball.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script>
-      const socket = io();
-      const status = document.getElementById('status');
-      const controls = document.getElementById('controls');
-  
-      function connect() {
-        const pin = document.getElementById('pin').value;
-        socket.emit('register_controller', pin);
-      }
-  
-      socket.on('error_message', (msg) => {
-        status.innerText = msg;
-        controls.style.display = 'none';
-      });
-  
-      socket.on('controller_connected', () => {
-        status.innerText = '✅ Conectado correctamente a la pantalla.';
-        controls.style.display = 'block';
-        socket.emit('hide_controls')
-      });
-      socket.on('controller_connected', () => {
-        status.innerText = '✅ Conectado correctamente a la pantalla.';
-        controls.style.display = 'block';
-        socket.emit('hide_controls')
-      });
-      socket.on('pokemon_appear',()=>{
-        console.log("A wild Pokemon appear!!")
-      })
-    </script>
+    <script src="JS/CONTROL/controllerSocket.js"></script>
     <script src="JS/CONTROL/selectSocketMsg.js"></script>
 </body>
 </html>

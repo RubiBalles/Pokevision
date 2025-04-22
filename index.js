@@ -18,6 +18,11 @@ const io = new Server(server);
 createVTTFile(__dirname);
 
 app.use(express.static('public'));
+
+app.get('/captureController.html', (req, res) => {
+  res.sendFile(__dirname + '/public/test.html');
+});
+
 server.listen(port, () => {
     console.log(`Example app listening on port
     ${port}`);
