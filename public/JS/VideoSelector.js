@@ -1,42 +1,20 @@
-const videoPlayer = document.getElementById('myVideo')
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const MUSIC_SELECT = document.getElementById('musicSelector');
-
-    MUSIC_SELECT.addEventListener('change', () => {
-        document.getElementById("MP3").src = "src/audio/Gen" + MUSIC_SELECT.value + ".mp3";
-        document.getElementById("M4A").src = "src/audio/Gen" + MUSIC_SELECT.value + ".m4a";
-        audio.load()
-        video.pause()
-        video.play()
-    });
-
-    document.getElementById('route').addEventListener('change', ()=>changeVideo(true));
-
-    document.getElementById('qualitySelector').addEventListener('change',() =>changeVideo())
-
-
-});
-
-async function changeVideo(changeTracks=false){
+async function changeVideo(changeTracks=false,video=null,fullName=null){
     const QUALITY_SELECTOR= document.getElementById('qualitySelector');
     const VIDEO=document.getElementById("myVideo");
     const ROUTE=document.getElementById("route");
+    const BASE_PATH="src/videos/"
+    const DEFAULT_FULL_NAME=BASE_PATH+QUALITY_SELECTOR.value+"/"+ROUTE.value
+
+    const videoMP4Src= fullName ? BASE_PATH+fullName+".mp4" : DEFAULT_FULL_NAME+".mp4"
+
+    const videoWEBMSrc=fullName ? BASE_PATH+fullName+".mp4" : DEFAULT_FULL_NAME+".mp4"
     
-    document.getElementById("MP4").src="src/videos/"+QUALITY_SELECTOR.value+"/"+ROUTE.value+".mp4"
-    document.getElementById("WEBM").src="src/videos/"+QUALITY_SELECTOR.value+"/"+ROUTE.value+".webm"
-    console.log("Vide cambiado de calidad: "+QUALITY_SELECTOR.value)
-    
-    console.log("src/videos/"+QUALITY_SELECTOR.value+"/"+ROUTE.value+".webm")
+    document.getElementById("MP4").src=videoMP4Src
+    document.getElementById("WEBM").src=videoWEBMSrc
         
     if(changeTracks){
-        await updateMediaTracksDyn(ROUTE.value.value)
-        console.log("traks updated!")
+        await updateMediaTracksDyn(video ? video : ROUTE.value)
     }
-        
-
     VIDEO.load()
 }
 
