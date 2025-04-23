@@ -18,15 +18,30 @@ socket.on('controller_connected', () => {
     socket.emit('hide_controls')
 });
 
-socket.on('controller_connected', () => {
-    statusInf.innerText = '✅ Conectado correctamente a la pantalla.';
-    controls.style.display = 'block';
-    socket.emit('hide_controls')
+socket.on('continue', () => {
+    const botonera = document.getElementById('botonera');
+    const pokeball = document.querySelector('.pokeball');
+    const body = document.body;
+    body.classList.add('botonera-active');
+    botonera.style.display = 'flex';
+    pokeball.style.display = 'none';
 });
 
 socket.on('pokemon_appear',async ()=>{
-    //const response=await fetch("/captureController.html")
-    //const HTML= await response.text()
-    document.getElementById("botonera").style.display="none"
-    document.getElementById("continueVideo").hidden=false
+    const botonera = document.getElementById('botonera');
+    const pokeball = document.querySelector('.pokeball');
+    const body = document.body;
+    body.classList.remove('botonera-active');
+    pokeball.style.display = 'block';
+    botonera.style.display = 'none';
+    //captureButton.hidden = false;
+ 
+    /*
+    else {
+        body.classList.add('botonera-active');
+        botonera.style.display = 'flex';
+        pokeball.style.display = 'none';
+        //captureButton.hidden = true;
+    }
+    */
 })

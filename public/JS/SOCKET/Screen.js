@@ -15,3 +15,4 @@ socket.on('selectVideo',async (change,videoName,fullName) =>{
     }
  })
  socket.on('subtitles',(value)=>changeSubtitles(value))
+ socket.on('throw_pokeball',()=>pokeballAnimation())

@@ -63,11 +63,13 @@ document.addEventListener("DOMContentLoaded", function() {
             if (pokeball.offsetTop <= 0 && Math.abs(moveDirection.y) > minDistance) {
                 // Si toca el borde superior y ha pasado 1/4 de la distancia, desaparece temporalmente
                 pokeball.classList.add("oculto");
+                socket.emit("throw_pokeball")
                 setTimeout(() => {
                     pokeball.classList.remove("oculto");
                     resetPokeball(); // Vuelve a la posición inicial
                 }, 1000); // Desaparece por 1 segundo
                 cancelAnimationFrame(animationFrameId); // Detener la animación
+                
                 return;
             }
 
