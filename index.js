@@ -111,6 +111,14 @@ io.on('connection', (socket) => {
           socket.screenSocket.emit('hide_controls');
         }
       });
+
+      socket.on('continue', () => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          console.log("Continue clicked")
+          socket.screenSocket.emit('continue');
+        }
+      });
+
       socket.on('pokemon_appear',()=>{
         if (socket.role === 'screen' && socket.controllerSocket) {
           socket.controllerSocket.emit('pokemon_appear');

@@ -25,7 +25,8 @@ socket.on('controller_connected', () => {
 });
 
 socket.on('pokemon_appear',async ()=>{
-    const response=await fetch("/captureController.html")
-    const HTML= await response.text()
+    //const response=await fetch("/captureController.html")
+    //const HTML= await response.text()
     document.getElementById("botonera").style.display="none"
+    document.getElementById("continueVideo").hidden=false
 })

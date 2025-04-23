@@ -59,9 +59,8 @@
             <option value="cat">Catalán</option>
           </select>
         </div>
-        <button id="continueVideo" hidden="true">Reanudar</button>
-      </div>                 
-      </div>
+      </div>   
+      <button id="continueVideo" hidden="true" onclick="socket.emit('continue')">Reanudar</button>              
     </main>
     
     <img src="src/img/PokeBall.png" alt="Pokéball" class="pokeball">
@@ -72,7 +71,7 @@
     <script src="JS/SpinPokeball.js"></script>
     <script src="JS/DragPokeball.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="JS/CONTROL/controllerSocket.js"></script>
+    <script src="JS/SOCKET/controller.js"></script>
     <script src="JS/CONTROL/selectSocketMsg.js"></script>
 </body>
 </html>

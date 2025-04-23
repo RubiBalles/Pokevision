@@ -5,4 +5,5 @@ img
 node_modules
 *.webm
 chapters.vtt
+test.js
 
