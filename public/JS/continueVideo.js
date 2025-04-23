@@ -14,8 +14,8 @@ function resetPlayer(){
     const BUTTON=document.getElementById("continueVideo");   
     if(BUTTON && !BUTTON.hidden){
         gifOverlay.style.display = "none"; // Ocultar GIF
-        gifOverlay.classList.remove("intoPokeball")
-        pokeball.classList.remove("shake")
+        gifOverlay.classList.remove("intoPokeball");
+        pokeball.classList.remove("shake");
         video.style.filter = "none"; // Quitar desenfoque
         //pokeTrainer.style.display="none"
         pokeball.style.display="none"
