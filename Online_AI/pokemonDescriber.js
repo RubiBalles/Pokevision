@@ -1,6 +1,6 @@
 import { pipeline } from '@xenova/transformers';
 
-const token = "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"; // Sustituye con tu token
+const token = ""; // Sustituye con tu token
 // Función para obtener la descripción básica de la imagen
 export async function getBasicDescription(imageUrl) {
   const captioner = await pipeline('image-to-text', 'Xenova/vit-gpt2-image-captioning');  // Modelo de captioning adecuado
