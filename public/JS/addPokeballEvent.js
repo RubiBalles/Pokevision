@@ -1,6 +1,6 @@
 // script.js
 var LAST_INSERT;
-function increasePokemonTeam(){// Creamos un nuevo contenedor
+async function increasePokemonTeam(){// Creamos un nuevo contenedor
     if(LAST_INSERT==ACT_POKEMON_SPRITE)
         return;
     const container = document.createElement('div');
@@ -9,8 +9,9 @@ function increasePokemonTeam(){// Creamos un nuevo contenedor
     
     // Imagen de la Pokébola
     const pokeBallImage = document.createElement('img');
+    container.appendChild(pokeBallImage);
     pokeBallImage.src = 'src/img/PokeBall.png';
-    pokeBallImage.alt = 'Pokébola';
+    pokeBallImage.alt = 'Pokebola';
     pokeBallImage.style.width = "80%";
     pokeBallImage.style.height = "80%";
     pokeBallImage.style.display = "block"; // Para evitar espacios adicionales
@@ -18,6 +19,7 @@ function increasePokemonTeam(){// Creamos un nuevo contenedor
     
     // Imagen del Pokémon
     const pokemonSprite = document.createElement('img');
+    container.appendChild(pokemonSprite);
     pokemonSprite.src = ACT_POKEMON_SPRITE.src;
     pokemonSprite.alt = ACT_POKEMON_SPRITE.name;
     pokemonSprite.style.position = "absolute"; // Superponer sobre la Pokébola
@@ -28,8 +30,8 @@ function increasePokemonTeam(){// Creamos un nuevo contenedor
     pokemonSprite.style.objectFit = "contain"; // Asegura que el Pokémon no se deforme
     
     // Agregar imágenes al contenedor
-    container.appendChild(pokeBallImage);
-    container.appendChild(pokemonSprite);
+
+
     
     // Agregar evento al Pokémon
     pokemonSprite.addEventListener('click', () => getPokeAPI(pokemonSprite.alt));
