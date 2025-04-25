@@ -15,7 +15,7 @@ function simularAparicionPokemon() {
 // Función para mostrar u ocultar la botonera y la pokébola
 function checkPokemonAppearance() {
     const botonera = document.getElementById('botonera');
-    const captureButton = document.getElementById('capturePokemonButton');
+    //const captureButton = document.getElementById('capturePokemonButton');
     const pokeball = document.querySelector('.pokeball');
     const body = document.body;
 
@@ -23,11 +23,11 @@ function checkPokemonAppearance() {
         body.classList.remove('botonera-active');
         botonera.style.display = 'none';
         pokeball.style.display = 'block';
-        captureButton.hidden = false;
+        //captureButton.hidden = false;
     } else {
         body.classList.add('botonera-active');
         botonera.style.display = 'flex';
         pokeball.style.display = 'none';
-        captureButton.hidden = true;
+        //captureButton.hidden = true;
     }
 }

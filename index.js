@@ -113,15 +113,21 @@ io.on('connection', (socket) => {
       });
 
       socket.on('continue', () => {
-        if (socket.role === 'controller' && socket.screenSocket) {
-          console.log("Continue clicked")
-          socket.screenSocket.emit('continue');
+        if (socket.role === 'screen' && socket.controllerSocket) {
+          //console.log("Continue clicked")
+          socket.controllerSocket.emit('continue');
         }
       });
 
       socket.on('pokemon_appear',()=>{
         if (socket.role === 'screen' && socket.controllerSocket) {
           socket.controllerSocket.emit('pokemon_appear');
+        }
+      });
+
+      socket.on('throw_pokeball', () => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('throw_pokeball');
         }
       });
 
