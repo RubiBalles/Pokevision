@@ -7,7 +7,7 @@ async function changeVideo(changeTracks=false,video=null,fullName=null){
 
     const videoMP4Src= fullName ? BASE_PATH+fullName+".mp4" : DEFAULT_FULL_NAME+".mp4"
 
-    const videoWEBMSrc=fullName ? BASE_PATH+fullName+".mp4" : DEFAULT_FULL_NAME+".mp4"
+    const videoWEBMSrc=fullName ? BASE_PATH+fullName+".webm" : DEFAULT_FULL_NAME+".webm"
     
     document.getElementById("MP4").src=videoMP4Src
     document.getElementById("WEBM").src=videoWEBMSrc

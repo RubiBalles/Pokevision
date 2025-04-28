@@ -16,3 +16,22 @@ socket.on('selectVideo',async (change,videoName,fullName) =>{
  })
  socket.on('subtitles',(value)=>changeSubtitles(value))
  socket.on('throw_pokeball',()=>pokeballAnimation())
+
+ socket.on('audio-ready', (audioBuffer) => {
+    const audio=document.getElementById("pokemonDescriptionAudio")
+    const uint8Array = new Uint8Array(audioBuffer);
+    const blob = new Blob([uint8Array], { type: 'audio/wav' });
+    const url = URL.createObjectURL(blob);
+
+    audio.src = url;
+    audio.style.display = 'block';
+    audio.play();
+  });
+
+socket.on('translated_text', (translated) => {
+  document.getElementById('translated-text').innerText += translated; // Mostramos la traducción
+});
+
+  socket.on('error', ({ message }) => {
+    console.error(message)
+  });

@@ -10,7 +10,7 @@
 /* Body */
 body {
     font-family: Mulish, sans-serif;
-    background: white;
+    background: rgb(red, green, blue);
     color: black;
     display: flex;
     flex-direction: column;
@@ -399,6 +399,12 @@ footer {
     #videoContainer {
         height: 70vh;
     }
+        #controllerButton{
+        display: block;
+    }    
+    #controllerButton{
+        display: none;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -453,6 +459,9 @@ footer {
     main {
         padding: 20px 5%;
     }
+    #controllerButton{
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -504,6 +513,9 @@ footer {
     
     body {
         overflow-x: hidden;
+    }
+    #controllerButton{
+        display: block;
     }
 }
 

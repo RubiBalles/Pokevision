@@ -6,4 +6,6 @@ node_modules
 *.webm
 chapters.vtt
 test.js
+.env
+Online_AI/tmp
 
