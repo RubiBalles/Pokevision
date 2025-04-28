@@ -46,16 +46,51 @@ async function getPokeAPI(nameOrId,chapterPokemon=false){
             <p><strong>Altura:</strong> ${data.height / 10} m</p>
             <p><strong>Peso:</strong> ${data.weight / 10} kg</p>
             <div style="align-items: center;">
-                <p><strong>Tipo:<img id="type1" class="pokeType"><img id="type2" class="pokeType"></p>
+                <p><strong>Tipo:</strong><img id="type1" class="pokeType"><img id="type2" class="pokeType"></p>
             </div>
+            <p id="translated-text">Descripcion: </p><br>
+            <audio id="pokeDescription" controlls></audio>
             
         `;
+        getPokemonDescription(data.name)
         getPokemonType(data.types)
 
     } catch (error) {
         infoDiv.innerHTML = `<p>Error: Pokémon no encontrado.</p>`;
     }
     addPokeSound("PokemonAppear");
+}
+
+async function getPokemonDescription(name) {
+    const response= await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
+    const data=await response.json()
+    const text=data.flavor_text_entries[0].flavor_text
+    console.log(text)
+    socket.emit('translate_text',  text );
+    await generatePokemonDescrAudio(text)
+    
+}
+
+async function generatePokemonDescrAudio(text) {
+    async function query(data) {
+        const response = await fetch(
+            "https://router.huggingface.co/fal-ai/fal-ai/dia-tts",
+            {
+                headers: {
+                    Authorization: "Bearer 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",
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: JSON.stringify(data),
+            }
+        );
+        const result = await response.json();
+        return result;
+    }
+    
+    query({ text: text }).then((response) => {
+        document.getElementById("pokeDescription").src=response.audio
+    });   
 }
 
 async function getPokemonType(typesArray){

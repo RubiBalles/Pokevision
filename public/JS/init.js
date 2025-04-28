@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //document.getElementById("continueVideo").addEventListener("click",()=>resetPlayer())
 
-    document.addEventListener("DOMContentLoaded", ()=>spinPokeBall());
+    const pokeball = document.querySelector(".pokeball");
+    if(pokeball)
+        spinPokeBall()
 
 });

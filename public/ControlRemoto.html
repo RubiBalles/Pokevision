@@ -8,18 +8,23 @@
   </head>
   <body class="botonera-active">
     <main>
+      <h1>Controlador</h1>
       <div id="botonera">
-        <div>
-          <h1>Controlador</h1>
-          <label>Introduce el PIN de la pantalla: <input id="pin" maxlength="6" /></label>
+        <div id="insertCode">
+          <label for="pin">Screen PIN:</label>
+          <input id="pin" name="pin" maxlength="6" />
+
           <button onclick="connect()">Conectar</button>
-          <p id="status"></p>
         </div>
-        
+          <p id="status"></p>
+
+        <div id="options" style="display: none;">
+          
+        </div>
         <div id="controls" style="display:none;">
           <button onclick="socket.emit('play')">▶️ Reproducir</button>
           <button onclick="socket.emit('pause')">⏸️ Pausar</button>
-        </div>
+
 
         <!--<button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>-->
         
@@ -60,7 +65,8 @@
             <option value="cat">Catalán</option>
           </select>
         </div>
-      </div>   
+      </div>
+    </div>   
     </main>
     
     <img src="src/img/PokeBall.png" alt="Pokéball" class="pokeball">
@@ -69,6 +75,7 @@
 
     <!---nuevos-->
     <!--<script src="JS/controlremoto.js"></script>-->
+    <script src="JS/init.js"></script>
     <script src="JS/SpinPokeball.js"></script>
     <script src="JS/DragPokeball.js"></script>
     <script src="/socket.io/socket.io.js"></script>

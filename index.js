@@ -1,15 +1,17 @@
 
 import express from "express";
+import fs from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createVTTFile } from './generateTrack.js'; // Importar la función para generar el archivo
+import { initializeTranslator, translateText } from './Online_AI/test.js';
 
 import http from 'http';
 import { Server } from 'socket.io';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const port = 80;
+const port = 3000;
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
@@ -19,8 +21,8 @@ createVTTFile(__dirname);
 
 app.use(express.static('public'));
 
-app.get('/captureController.html', (req, res) => {
-  res.sendFile(__dirname + '/public/test.html');
+app.get('/controller', (req, res) => {
+  res.sendFile(__dirname + '/public/ControlRemoto.html');
 });
 
 server.listen(port, () => {
@@ -128,6 +130,19 @@ io.on('connection', (socket) => {
       socket.on('throw_pokeball', () => {
         if (socket.role === 'controller' && socket.screenSocket) {
           socket.screenSocket.emit('throw_pokeball');
+        }
+      });
+
+      socket.on('translate_text', async (text) => {
+        console.log('Texto recibido:', text);
+  
+        try {
+          const translated = await translateText(text);
+          console.log('Texto traducido:', translated);
+          socket.emit('translated_text', translated);
+        } catch (error) {
+          console.error('Error durante la traducción:', error);
+          socket.emit('translated_text', 'Error al traducir el texto');
         }
       });
 
