@@ -77,7 +77,7 @@ async function generatePokemonDescrAudio(text) {
             "https://router.huggingface.co/fal-ai/fal-ai/dia-tts",
             {
                 headers: {
-                    Authorization: "Bearer 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",
+                    Authorization: "Bearer hf_xxx",
                     "Content-Type": "application/json",
                 },
                 method: "POST",
