@@ -16,7 +16,7 @@
     });
 }; */
 
-//document.getElementById('capturePokemonButton').addEventListener('click',()=>pokeballAnimation());
+document.getElementById('gifOverlay').addEventListener('click',()=>pokeballAnimation());
 
 function pokeballAnimation(){
     //document.getElementById('capturePokemonButton').hidden=true

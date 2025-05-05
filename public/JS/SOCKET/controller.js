@@ -1,6 +1,7 @@
 const socket = io();
 const statusInf = document.getElementById('status');
 const controls = document.getElementById('controls');
+const insertCode=document.getElementById('insertCode');
 
 function connect() {
   const pin = document.getElementById('pin').value;
@@ -15,6 +16,7 @@ socket.on('error_message', (msg) => {
 socket.on('controller_connected', () => {
     statusInf.innerText = '✅ Conectado correctamente a la pantalla.';
     controls.style.display = 'block';
+    insertCode.style.display='none'
     socket.emit('hide_controls')
 });
 
