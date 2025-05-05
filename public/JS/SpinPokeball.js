@@ -26,3 +26,4 @@ function spinPokeBall(){
     pokeball.addEventListener("touchstart", startSpin);
     document.addEventListener("touchend", stopSpin);
 }
+window.spinPokeBall = spinPokeBall;
