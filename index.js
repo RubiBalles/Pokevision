@@ -4,14 +4,14 @@ import fs from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createVTTFile } from './generateTrack.js'; // Importar la función para generar el archivo
-import { initializeTranslator, translateText } from './Online_AI/test.js';
+// import { initializeTranslator, translateText } from './Online_AI/test.js';
 
 import http from 'http';
 import { Server } from 'socket.io';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const port = 3000;
+const port = 80;
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
@@ -19,6 +19,10 @@ const io = new Server(server);
 //Se generan los VTT dinamicamente
 createVTTFile(__dirname);
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use(express.static('public'));
 
 app.get('/controller', (req, res) => {
@@ -29,6 +33,7 @@ server.listen(port, () => {
     console.log(`Example app listening on port
     ${port}`);
     });
+
 
 const screens = {};         // pin => screenSocket
 const controllers = {};     // screenSocket.id => controllerSocket
