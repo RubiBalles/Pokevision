@@ -36,6 +36,36 @@
                      Tu navegador no soporta el elemento de video.
 
                   </video>
+                  <!-- <script src="//cdn.dashjs.org/latest/dash.all.min.js"></script>
+                  <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                  init();
+                  });
+                  function init() {
+                  var video, player, url = "media/manifest.mpd";
+                  video = document.querySelector("video");
+                  player = dashjs.MediaPlayer().create();
+                  player.initialize(video, url, true);
+                  }
+                  </script> -->
+
+                  <!-- <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
+                  <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                  init();
+                  });
+                  function init() {
+                  var video, player, url = "media/mp4box/manifest.m3u8";
+                  if (Hls.isSupported()) {
+                  video = document.querySelector('video’);
+                  player = new Hls();
+                  player.on(Hls.Events.MEDIA_ATTACHED, function () { /* ... */ });
+                  player.loadSource(url);
+                  player.attachMedia(video);
+                  }
+                  }
+                  </script> -->
+
                   <audio id="myAudio" hidden="true">
                      <source id="M4A" src="src/audio/Gen1.m4a" type="audio/m4a">
                      <source id="MP3" src="src/audio/Gen1.mp3" type="audio/mp3">
