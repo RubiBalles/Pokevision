@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
+<video id="videoPlayer" controls autoplay style="width: 100%;"></video>
+<script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+<script>
+    const url = 'https://gdie2501.ltim.uib.es/src/videos/suiza/manifest.mpd'; // Reemplaza con la URL real
+    const video = document.getElementById('videoPlayer');
+    const player = dashjs.MediaPlayer().create();
 
-    </head>
-    <body>
-        <header>
+    player.initialize(video, url, true);
 
-        </header>
-        <main>
-            <h1>Esta es la página donde aparecera la pokeball</h1>
-        </main>
-    </body>
-</html>
+
+</script>

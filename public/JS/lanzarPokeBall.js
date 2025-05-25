@@ -19,6 +19,8 @@
 document.getElementById('gifOverlay').addEventListener('click',()=>pokeballAnimation());
 
 function pokeballAnimation(){
+    const route=ROUTE.value
+    const pokeName=document.getElementById("pokemonDescription").querySelector('h2').innerText
     //document.getElementById('capturePokemonButton').hidden=true
     var pokeball = document.getElementById('pokeball');
 
@@ -38,7 +40,7 @@ function pokeballAnimation(){
             } else if (event.animationName === "shake") {
                 increasePokemonTeam();
                 pokeball.removeEventListener("animationend", onLaunchEnd);
-                socket.emit("continue")
+                socket.emit("continue",pokeName,route)
                 setTimeout(() => console.log(), 1000)
                 pokeball.classList.add("launch");
                 resetPlayer()

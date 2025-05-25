@@ -6,32 +6,37 @@ socket.on('pin_assigned', (pin) => document.getElementById('pinLabel').innerText
 socket.on('play', () => video.play());
 socket.on('pause', () => video.pause());
 socket.on('continue', () => resetPlayer());
-socket.on('hide_controls',()=>hideScreenControlers())
-socket.on('selectVideo',async (change,videoName,fullName) =>{
-    try {
-        await changeVideo(change,videoName,fullName);
-    } catch (err) {
-    console.error('Error al cambiar video:', err);
-    }
- })
- socket.on('subtitles',(value)=>changeSubtitles(value))
+socket.on('hide_controls', () => hideScreenControlers())
+socket.on('selectQuality', (value) => videoController.setBitrate(Number(value)))
+socket.on('selectVideo',async (player,route) => updatePlayerRemote(player,route))
+socket.on('selectPlayer',async (player,route) => {
+  const currTime=video.currentTime
+  updatePlayerRemote(player,route)
+  video.currentTime=currTime}
+)
+socket.on('subtitles',(value)=>setSubtitleTrack(Number(value)))
+socket.on('fullscreen',toggleFullscreen)
+socket.on('volumeChange',(value)=>{
+  video.volume=value
+  document.getElementById("pokeAudio").volume=value
+})
+socket.on('changeMusic',(value)=>{
+  console.log("recibido el mensaje 'changeMusic'")
+  if(dashPlayer)
+    dashPlayer.setCurrentTrack(player.getTracksFor("audio")[value])
+  else
+    hlsPlayer.audioTrack = value;
+})
  socket.on('throw_pokeball',()=>pokeballAnimation())
 
- socket.on('audio-ready', (audioBuffer) => {
-    const audio=document.getElementById("pokemonDescriptionAudio")
-    const uint8Array = new Uint8Array(audioBuffer);
-    const blob = new Blob([uint8Array], { type: 'audio/wav' });
-    const url = URL.createObjectURL(blob);
+socket.on('translated_text', (translated) => document.getElementById('translated-text').innerText = translated);
 
-    audio.src = url;
-    audio.style.display = 'block';
-    audio.play();
-  });
+socket.on('error', ({ message }) => console.error(message));
 
-socket.on('translated_text', (translated) => {
-  document.getElementById('translated-text').innerText += translated; // Mostramos la traducción
+socket.on("chatMessage", ({ username, message }) => {
+    appendMessage(`${username}: ${message}`);
 });
 
-  socket.on('error', ({ message }) => {
-    console.error(message)
-  });
+socket.on("userJoined", (name) => {
+    appendMessage(`🟢 ${name} se ha unido al chat`, true);
+});

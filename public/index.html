@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Pokevision</title>
       <link rel="stylesheet" href="CSS/styles.css">
+      <link rel="stylesheet" href="JS/DASH/contrib/controlbar.css">
    </head>
    <body>
       <header>
@@ -25,20 +26,22 @@
 
                <div id="videoContainer">
 
-                  <video id="myVideo" controls muted>
-                     <source id="MP4" src="src/videos/1080p/tokio.mp4" type="video/mp4">
-                     <source id="WEBM" src="src/videos/1080p/tokio.mp4" type="video/webm">
+                  <video id="myVideo">
+                     
                         <track id="META" kind="metadata" label="suiza Video metadata" src="src/tracks/meta/tokioMeta.vtt">
                         <track id="ESP" kind="subtitles" label="Español" srclang="es" src="src/tracks/descriptions/tokioDescriptionESP.vtt">
                         <track id="EN" kind="subtitles" label="English" srclang="en" src="src/tracks/descriptions/tokioDescriptionEN.vtt">
                         <track id="CAT" kind="subtitles" label="Català" srclang="cat" src="src/tracks/descriptions/tokioDescriptionCAT.vtt">
-                     Tu navegador no soporta el elemento de video.
 
+                     Tu navegador no soporta el elemento de video.
                   </video>
+                  <!--
                   <audio id="myAudio" hidden="true">
                      <source id="M4A" src="src/audio/Gen1.m4a" type="audio/m4a">
                      <source id="MP3" src="src/audio/Gen1.mp3" type="audio/mp3">
                   </audio>
+                  -->
+                  
 
                   <audio id="pokeAudio" hidden="true">
                      <source id="pokeAudioM4A" src="src/audio/PokemonAppear.m4a" type="audio/m4a">
@@ -50,7 +53,7 @@
                   <img class="pokeball" id="pokeball" src="src/img/PokeBall.png">
 
 
-
+<!--
                      <select id="qualitySelector" class="qualitySelector">
                         <option value="4K">4K</option>
                         <option value="2K">2K</option>
@@ -58,8 +61,50 @@
                         <option value="720p">HD (720p)</option>
                         <option value="480p">SD (480p)</option>
                      </select>
+                  -->
+               <div id="videoController" class="video-controller unselectable">
+                  <div id="playPauseBtn" class="btn-play-pause" title="Play/Pause">
+                     <span id="iconPlayPause" class="icon-play"></span>
+                  </div>
+                  <span id="videoTime" class="time-display">00:00:00</span>
+                  <div id="fullscreenBtn" class="btn-fullscreen control-icon-layout" title="Fullscreen">
+                     <span class="icon-fullscreen-enter"></span>
+                  </div>
+                  <div id="bitrateListBtn" class="control-icon-layout" title="Bitrate List">
+                     <span class="icon-bitrate"></span>
+                     <div id="bitrateMenu" class="bitrate-menu hidden">
+                        <!-- Las opciones se generarán dinámicamente -->
+                     </div>
+                  </div>
+                  <input type="range" id="volumebar" class="volumebar" value="1" min="0" max="1" step=".01">
+                  <div id="muteBtn" class="btn-mute control-icon-layout" title="Mute">
+                     <span id="iconMute" class="icon-mute-off"></span>
+                  </div>
 
+                  <div id="trackSwitchBtn" class="control-icon-layout" title="A/V Tracks">
+                     <span class="icon-tracks"></span>
+                     <ul id="audioTrackMenu" class="track-menu hidden"></ul>
+                  </div>
+
+                  <div id="captionBtn" class="btn-caption control-icon-layout" title="Closed Caption">
+                     <span class="icon-caption"></span>
+                        <ul id="subtitleMenu" class="caption-menu hidden">
+                           <li data-track="-1">OFF</li>
+                           <li data-track="0">es</li>
+                           <li data-track="1">en</li>
+                           <li data-track="2">ca</li>
+                        </ul>
+                  </div>
+                  <span id="videoDuration" class="duration-display">00:00:00</span>
+                  <div class="seekContainer">
+                     <div id="seekbar" class="seekbar seekbar-complete">
+                        <div id="seekbar-buffer" class="seekbar seekbar-buffer"></div>
+                        <div id="seekbar-play" class="seekbar seekbar-play"></div>
+                     </div>
+                  </div>
                </div>
+            </div>
+
             <div id="routeSelector">
                <div id="botonera">
                   
@@ -68,8 +113,19 @@
                      <select id="route">
                         <option value="tokio">Tokio</option>
                         <option value="suiza">Suiza</option>
+                        <option value="test">Test</option>
                      </select>
                   </div>
+
+                  <div>
+                     <label for="playerSelector">Elige reproductor:</label>
+                     <select id="playerSelector">
+                        <option value="hls">HLS</option>
+                        <option value="dash">DASH</option>
+                        <option value="dash">IPFS</option>                     
+                     </select>
+                  </div>
+               <!-- LEGACY FEATURE
                   <div>
                      <label for="musicSelector">Musica de Fondo:</label>
                      <select id="musicSelector">
@@ -79,7 +135,7 @@
                   </div>
                </div>
             
-                  <!-- LEGACY FEATURE
+ 
                   </div>
                   <button id="continueVideo" hidden="true">Reanudar</button>
                   <button id="capturePokemonButton" hidden="true">Lanzar Pokeball</button>
@@ -100,11 +156,11 @@
 
 -->
           
-            
+            </div> 
          <div id="pokeBallContainer">
             <!-- Las imágenes de Pokébola se agregarán aquí -->
          </div>
-      </div> 
+      
       </section>
       <section id="sectionDescription">
          <div id="pokemonDescription">
@@ -122,7 +178,16 @@
          aventura digital? ¡Atrapa la emoción con PokeVision!    
          </p>
          </div>
-         
+         </section>
+         <section>
+             <div id="chatContainer" class="chat-box">
+            <div id="messages" class="messages"></div>
+            <div id="chatButtons">
+               <input id="username" type="text" placeholder="Tu nombre" />
+               <input id="chatInput" type="text" placeholder="Escribe un mensaje..." />
+               <button id="sendBtn">Enviar</button>
+            </div>
+         </div>
          </section>
          
       </main>
@@ -130,6 +195,17 @@
          <div id="foot"></div>
          <p>&copy; 2025 Pokevision. All rights reserved. Authors: Rubén Ballesteros Jiménez & Miquel Ángel Montero Pazmiño</p>
       </footer>
+      <script src="//cdn.jsdelivr.net/npm/hls.js@1"></script>
+      <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+      <script src="JS/DASH/contrib/ControlBar.js"></script>
+      <script src="JS/DASH/DASHPlayer.js"></script>
+      <script src="JS/DASH/DASHbitRate.js"></script>
+      <script src="JS/HLS/HLSPlayer.js"></script>
+      <script src="JS/PLAYER/ControllBar.js"></script>
+      <script src="JS/PLAYER/bgMusicSelect.js"></script>
+      <script src="JS/PLAYER/switchCaptions.js"></script>
+      <script src="JS/PLAYER/renueTracks.js"></script>
+      <script src="JS/CHAT/chat.js"></script>
       <script src="JS/updateMediaTracks.js"></script>
       <script src="JS/addPokeballEvent.js"></script>
       <script src="JS/continueVideo.js"></script>
@@ -139,7 +215,7 @@
       <script src="JS/videoChapters.js"></script>
       <script src="JS/VideoSelector.js"></script>
       <script src="JS/Menu.js"></script>
-      <script src="JS/syncAudioVideo.js"></script>
+      <!--<script src="JS/syncAudioVideo.js"></script>-->
       <script src="JS/videoDetectChange.js"></script>
       <script src="JS/addPokeSound.js"></script>
       <script src="JS/hideControlers.js"></script>

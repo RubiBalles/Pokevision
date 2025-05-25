@@ -1,10 +1,9 @@
 
 import express from "express";
-import fs from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { createVTTFile } from './generateTrack.js'; // Importar la función para generar el archivo
-import { initializeTranslator, translateText } from './Online_AI/test.js';
+//import { createVTTFile } from './generateTrack.js';  Importar la función para generar el archivo
+import { initializeTranslator, translateText } from './Online_AI/xenovaTranslator.js';
 
 import http from 'http';
 import { Server } from 'socket.io';
@@ -17,7 +16,7 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 //Se generan los VTT dinamicamente
-createVTTFile(__dirname);
+//createVTTFile(__dirname);
 
 app.use(express.static('public'));
 
@@ -61,9 +60,12 @@ io.on('connection', (socket) => {
     
         // Verifica que no haya ya un controlador
         if (controllers[screenSocket.id]) {
-          socket.emit('error_message', '❌ Esta pantalla ya tiene un controlador.');
+          socket.emit('error_message', '❌ Esta sala ya está completa');
           return;
         }
+
+        if(screenSocket.username)
+          socket.username=screenSocket.username
     
         socket.role = 'controller';
         socket.screenSocket = screenSocket;
@@ -78,7 +80,6 @@ io.on('connection', (socket) => {
       });
     
       socket.on('play', () => {
-        //console.log("Se ha pulsado el boton de play")
         if (socket.role === 'controller' && socket.screenSocket) {
           socket.screenSocket.emit('play');
         }
@@ -90,21 +91,46 @@ io.on('connection', (socket) => {
         }
       });
 
-      socket.on('selectVideo', (changeVideo,videoName,fullName) => {
+      socket.on('selectVideo', (player,video) => {
         if (socket.role === 'controller' && socket.screenSocket) {
-          socket.screenSocket.emit('selectVideo', changeVideo,videoName,fullName);
+          socket.screenSocket.emit('selectVideo', player,video);
+        }
+      });
+      socket.on('selectPlayer', (player,video) => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('selectPlayer', player,video);
         }
       });
 
       socket.on('selectQuality', (value) => {
         if (socket.role === 'controller' && socket.screenSocket) {
-          socket.screenSocket.emit('selectVideo', value);
+          socket.screenSocket.emit('selectQuality', value);
         }
       });
 
       socket.on('subtitles', (value) => {
         if (socket.role === 'controller' && socket.screenSocket) {
           socket.screenSocket.emit('subtitles', value);
+        }
+      });
+
+      socket.on('fullscreen', () => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('fullscreen');
+        }
+      });
+
+      socket.on('changeMusic', (value) => {
+
+        if (socket.role === 'controller' && socket.screenSocket) {
+
+          socket.screenSocket.emit('changeMusic', value);
+        }
+      });
+
+      socket.on('volumeChange', (value) => {
+        if (socket.role === 'controller' && socket.screenSocket) {
+          socket.screenSocket.emit('volumeChange', value);
         }
       });
     
@@ -114,9 +140,20 @@ io.on('connection', (socket) => {
         }
       });
 
-      socket.on('continue', () => {
+      socket.on('continue', (pokemon,route) => {
+        let username
+        if(socket.role==="screen" && socket.controllerSocket){
+          username=socket.username ? socket.username : socket.controllerSocket.username
+        }
+        else if (socket.role==="screen"){
+          username=socket.username ? socket.username : -1
+        }
+
+        if(typeof(username)=== "string") {
+          const message=`⭐ Acabo de capturar un ${pokemon} en ${route}!!`
+          io.emit("chatMessage",{ username, message });
+        }
         if (socket.role === 'screen' && socket.controllerSocket) {
-          //console.log("Continue clicked")
           socket.controllerSocket.emit('continue');
         }
       });
@@ -134,11 +171,9 @@ io.on('connection', (socket) => {
       });
 
       socket.on('translate_text', async (text) => {
-        console.log('Texto recibido:', text);
   
         try {
           const translated = await translateText(text);
-          console.log('Texto traducido:', translated);
           socket.emit('translated_text', translated);
         } catch (error) {
           console.error('Error durante la traducción:', error);
@@ -147,6 +182,9 @@ io.on('connection', (socket) => {
       });
 
       socket.on('disconnect', () => {
+        if (socket.username) {
+          io.emit("userJoined", `${socket.username} salió del chat`);
+        }
         if (socket.role === 'screen') {
           const pin = activePins[socket.id];
           if (pin) delete screens[pin];
@@ -169,4 +207,13 @@ io.on('connection', (socket) => {
           }
         }
       });
+      socket.on("userJoined", (name) => {
+      socket.username = name;
+        io.emit("userJoined", name);
+      });
+
+      socket.on("chatMessage", ({ username, message }) => {
+        io.emit("chatMessage", { username, message });
+      });
     });
+    
