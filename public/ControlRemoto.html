@@ -27,7 +27,7 @@
           <button onclick="socket.emit('pause')">⏸️ Pausar</button>
 
 
-        <!--<button onclick="simularAparicionPokemon()">Simular aparición de Pokémon</button>-->
+        <button onclick="socket.emit('fullscreen')">Pantalla Completa</button>
         
         <div>
           <label for="route">Elige tu ruta:</label>
@@ -36,23 +36,37 @@
             <option value="suiza">Suiza</option>
           </select>
         </div>
+
+        <div>
+          <label for="playerSelector">Elige un reproductor:</label>
+          <select id="playerSelector">
+            <option value="dash">DASH</option>
+            <option value="hls">HLS</option>
+            <option value="ipfs">IPFS</option>
+          </select>
+        </div>
+        
+        <div>
+          <label for="volumebar">Volumen:</label>
+          <input type="range" id="volumebar" class="volumebar" value="1" min="0" max="1" step=".01">
+        </div>
         
         <div>
           <label for="qualitySelector">Calidad: </label>
           <select id="qualitySelector" class="qualitySelector">
-            <option value="4K">4K</option>
-            <option value="2K">2K</option>
-            <option value="1080p">Full HD (1080p)</option>
-            <option value="720p">HD (720p)</option>
-            <option value="480p">SD (480p)</option>
+            <option value="0">SD (480p)</option>
+            <option value="1">HD (720p)</option>
+            <option value="2">Full HD (1080p)</option>
+            <option value="3">2K</option>
+            <option value="4">4K</option>
           </select>
         </div>
 
         <div>
           <label for="musicSelector">Musica de Fondo:</label>
           <select id="musicSelector">
-            <option value="1" default>Gen 1</option>
-            <option value="2">Gen 2</option>
+            <option value="0" default>Gen 1</option>
+            <option value="1">Gen 2</option>
           </select>
         </div>
 
@@ -60,11 +74,17 @@
         <div>
           <label for="subtitleSelector">Subtitulos:</label>
           <select id="subtitleSelector">
-            <option value="">Sin subtítulos</option>
-            <option value="en">Inglés</option>
-            <option value="es">Español</option>
-            <option value="cat">Catalán</option>
+            <option value="-1">Sin subtítulos</option>
+            <option value="1">Inglés</option>
+            <option value="0">Español</option>
+            <option value="2">Catalán</option>
           </select>
+        </div>
+
+        <div id="chatButtons">
+          <input id="username" type="text" placeholder="Tu nombre" />
+          <input id="chatInput" type="text" placeholder="Escribe un mensaje..." />
+          <button id="sendBtn">Enviar</button>
         </div>
       </div>
     </div>   
@@ -82,5 +102,9 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="JS/SOCKET/controller.js"></script>
     <script src="JS/CONTROL/selectSocketMsg.js"></script>
+    <script src="JS/CHAT/chat.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded",spinPokeBall())
+    </script>
 </body>
 </html>

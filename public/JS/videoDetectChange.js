@@ -1,18 +1,25 @@
+let LAST_CHAPTER = null;
 
-const track = video.textTracks[0];
+function setupMetadataListener(video) {
+    const metadataTracks = Array.from(video.textTracks).filter(track => track.kind === "metadata");
 
-let LAST_CHAPTER=0
-video.addEventListener("timeupdate", () => {
-    if(track.mode=="hidden"){
-        for (let i = 0; i < track.cues.length; i++) {
-            const cue = track.cues[i];
-            if (video.currentTime >= cue.startTime && video.currentTime <= cue.endTime) {
-                if(cue.text.substr(0,1)!=LAST_CHAPTER){
-                    //MetadataFunction(cue)
-                    LAST_CHAPTER=cue.text.substr(0,1)
-                }
+    if (!metadataTracks.length) {
+        console.warn("No metadata tracks found.");
+        return;
+    }
+
+    const track = metadataTracks[0];
+    track.mode = "hidden"; // Ensure the track is active but not displayed
+
+    track.addEventListener("cuechange", () => {
+        const activeCues = track.activeCues;
+        if (activeCues && activeCues.length > 0) {
+            const cue = activeCues[0];
+            const chapter = cue.text.substr(0, 1);
+            if (chapter !== LAST_CHAPTER) {
+                LAST_CHAPTER = chapter;
+                MetadataFunction(cue);
             }
         }
-    }
-    }
-);
+    });
+}
