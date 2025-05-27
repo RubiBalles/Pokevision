@@ -35,6 +35,7 @@ async function updatePlayer(curTime=null){
   }
 }
 
+
 async function updatePlayerRemote(player,route){
   const curTime=video.currentTime
   if (player==="dash"){
@@ -48,3 +49,4 @@ async function updatePlayerRemote(player,route){
    loadHLS(video,pathIPFS,true)
   }
 }
+

@@ -2,8 +2,9 @@
 import express from "express";
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-//import { createVTTFile } from './generateTrack.js';  Importar la función para generar el archivo
+
 import { initializeTranslator, translateText } from './Online_AI/xenovaTranslator.js';
+
 
 import http from 'http';
 import { Server } from 'socket.io';
@@ -18,6 +19,10 @@ const io = new Server(server);
 //Se generan los VTT dinamicamente
 //createVTTFile(__dirname);
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 app.use(express.static('public'));
 
 app.get('/controller', (req, res) => {
@@ -28,6 +33,7 @@ server.listen(port, () => {
     console.log(`Example app listening on port
     ${port}`);
     });
+
 
 const screens = {};         // pin => screenSocket
 const controllers = {};     // screenSocket.id => controllerSocket
