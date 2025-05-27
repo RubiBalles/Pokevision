@@ -10,7 +10,7 @@ import { Server } from 'socket.io';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const port = 3000;
+const port = 80;
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
