@@ -48,7 +48,7 @@ async function getPokeAPI(nameOrId,chapterPokemon=false){
             <div style="align-items: center;">
                 <p><strong>Tipo:</strong><img id="type1" class="pokeType"><img id="type2" class="pokeType"></p>
             </div>
-            <p id="translated-text">Descripcion: </p><br>
+            <p><strong>Descripcion:</strong></p><p id="translated-text">Loading...</p><br>
             <audio id="pokeDescription" controlls></audio>
             
         `;
@@ -65,7 +65,6 @@ async function getPokemonDescription(name) {
     const response= await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name}`)
     const data=await response.json()
     const text=data.flavor_text_entries[0].flavor_text
-    console.log(text)
     socket.emit('translate_text',  text );
     await generatePokemonDescrAudio(text)
     

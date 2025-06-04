@@ -17,7 +17,7 @@ function MetadataFunction(activeCue){
  // Obtener el cue activo
             
     if (activeCue) {
-        console.log(`Capítulo en curso: ${activeCue.text}`);
+        //console.log(`Capítulo en curso: ${activeCue.text}`);
         resetPlayer()
         const appear=Math.floor(Math.random()*5)
         if(appear<2)

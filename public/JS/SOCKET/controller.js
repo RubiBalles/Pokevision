@@ -36,14 +36,4 @@ socket.on('pokemon_appear',async ()=>{
     body.classList.remove('botonera-active');
     pokeball.style.display = 'block';
     botonera.style.display = 'none';
-    //captureButton.hidden = false;
- 
-    /*
-    else {
-        body.classList.add('botonera-active');
-        botonera.style.display = 'flex';
-        pokeball.style.display = 'none';
-        //captureButton.hidden = true;
-    }
-    */
 })
